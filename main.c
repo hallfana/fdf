@@ -6,13 +6,14 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 00:13:35 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:15:20 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./mlx_linux/mlx.h"
 #include "fdf.h"
 #include <math.h>
+#include <stdio.h>
 
 int	create_trgb(int t, int r, int g, int b)
 {
@@ -57,6 +58,12 @@ t_data gen_rgb_img(void *mlx)
 	return img;
 }
 
+int keyboardHandler(int code)
+{
+	printf("key pressed %d\n", code);
+	return (0);
+}
+
 int	main(void)
 {
 	void	*mlx;
@@ -68,6 +75,7 @@ int	main(void)
 
 	img = gen_rgb_img(mlx);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	
+
+	mlx_hook(mlx_win, 2, 1L<<0, keyboardHandler, mlx);
 	mlx_loop(mlx);
 }
