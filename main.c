@@ -3,20 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/08 18:43:26 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/08 19:42:30 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./mlx_linux/mlx.h"
+#include <math.h>
+
+int generate_rgb()
+{
+	static int i = 0;
+	int m_pi = 3.14159265358979323846;
+ 
+	int red = (128.0 + sin(i * 2 * m_pi / 256 + 0.0) * 127.0);
+	int green = (128.0 + sin(i * 2 * m_pi / 256 + 2 * m_pi / 3.0) * 127.0);
+	int blue = (128.0 + sin(i * 2 * m_pi / 256 + 4 * m_pi / 3.0) * 127.0);
+
+	i++;
+	if (i >= 256)
+		i = 0;
+	return (red << 16 | green << 8 | blue);
+}
 
 int	create_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
-
 
 int	main(void)
 {
@@ -29,7 +44,7 @@ int	main(void)
 	{
 		for (int y = 10 ; y < 50 ; y++)
 		{
-			mlx_pixel_put(mlx, mlx_win, x, y, create_trgb(0, 150, 150, 150));
+			mlx_pixel_put(mlx, mlx_win, x, y, generate_rgb(0, 150, 150, 150));
 		}
 	}
 	mlx_loop(mlx);
