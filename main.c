@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 00:13:23 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:13:35 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_data gen_rgb_img(void *mlx)
 		int rgb = generate_rgb();
 		for (int x2 = 0; x2 < 1; x2++)
 		{
-			for (int y = 0 ; y < 200 ; y++)
+			for (int y = 0 ; y < 250 ; y++)
 			{
 				my_mlx_pixel_put(&img, x + x2, y, rgb);
 			}
