@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/08 20:06:18 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/08 20:11:27 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,35 @@ int generate_rgb()
 	return create_trgb(0, r, g, b);
 }
 
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
 int	main(void)
 {
 	void	*mlx;
-	//void	*mlx_win;
-	void	*img;
+	void	*mlx_win;
+	t_data	img;
 
 	mlx = mlx_init();
-	//mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	/*for(int x = 10; x < 1200; x+=10)
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	img.img = mlx_new_image(mlx, 1920, 1080);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	for(int x = 10; x < 1200; x+=10)
 	{
 		int rgb = generate_rgb();
 		for (int x2 = 0; x2 < 10; x2++)
 		{
 			for (int y = 10 ; y < 200 ; y++)
 			{
-				mlx_pixel_put(mlx, mlx_win, x + x2, y, rgb);
+				my_mlx_pixel_put(&img, x + x2, y, rgb);
 			}
 		}
-	}*/
-	img = mlx_new_image(mlx, 1920, 1080);
-	(void)img;
+	}
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }
