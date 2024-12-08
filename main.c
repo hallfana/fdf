@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 00:20:47 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:22:43 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,13 @@ int keyboardHandler(int code)
 	//r 114
 
 	if (code == 65307)
+	{
+		mlx_destroy_window(fdf->mlx, fdf->mlx_win);
+		free(fdf->mlx);
+		free(fdf->mlx_win);
+		free(fdf);
 		exit(0);
+	}
 	if (code == 114)
 	{
 		t_data img = gen_rgb_img(fdf->mlx);
