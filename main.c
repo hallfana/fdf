@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/08 19:51:34 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/08 19:52:17 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ int	create_trgb(int t, int r, int g, int b)
 int generate_rgb()
 {
 	// generate rgb gradient for each pixel of my banner
+	// fix the code i have a grey banner
+
 	int r = (int)(sin(0.1) * 127 + 128);
 	int g = (int)(sin(0.2) * 127 + 128);
 	int b = (int)(sin(0.3) * 127 + 128);
-	return (create_trgb(100, r, g, b));
+	return (create_trgb(0, r, g, b));
+	
 }
 
 int	main(void)
