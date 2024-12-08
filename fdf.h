@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:05:57 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/09 00:19:17 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:55:54 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,12 @@ typedef struct s_fdf {
 	void	*mlx;
 	void	*mlx_win;
 }				t_fdf;
+
+typedef struct s_point {
+	int x;
+	int y;
+	int z;
+	int color;
+}				t_point;
 
 #endif

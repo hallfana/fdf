@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 00:23:29 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:56:24 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int keyboardHandler(int code)
 
 int	main(void)
 {
+	printf("Hello world!%ld\n", sizeof(t_point));
 	t_data	img;
 	fdf = malloc(sizeof(t_fdf));
 
