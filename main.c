@@ -6,11 +6,12 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/08 20:05:25 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/08 20:06:18 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./mlx_linux/mlx.h"
+#include "fdf.h"
 #include <math.h>
 
 int	create_trgb(int t, int r, int g, int b)
