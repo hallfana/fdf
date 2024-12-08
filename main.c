@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/08 20:15:55 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/08 20:16:18 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ int	main(void)
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	for(int x = 10; x < 1200; x+=10)
+	for(int x = 10; x < 1200; x+=2)
 	{
 		int rgb = generate_rgb();
-		for (int x2 = 0; x2 < 10; x2++)
+		for (int x2 = 0; x2 < 2; x2++)
 		{
 			for (int y = 10 ; y < 200 ; y++)
 			{
