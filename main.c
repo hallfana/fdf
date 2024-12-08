@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 00:20:26 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:20:36 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int keyboardHandler(int code)
 int	main(void)
 {
 	t_data	img;
+	fdf = malloc(sizeof(t_fdf));
 
 	fdf->mlx = mlx_init();
 	fdf->mlx_win = mlx_new_window(fdf->mlx, 500, 500, "Hello world!");
