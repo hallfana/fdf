@@ -3,6 +3,18 @@
 		"math.h": "c",
 		"mlx.h": "c",
 		"stdio.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"bit": "cpp",
+		"*.tcc": "cpp",
+		"algorithm": "cpp",
+		"memory": "cpp",
+		"random": "cpp",
+		"initializer_list": "cpp",
+		"numeric": "cpp",
+		"ostream": "cpp",
+		"streambuf": "cpp",
+		"array": "cpp",
+		"functional": "cpp",
+		"tuple": "cpp"
 	}
 }

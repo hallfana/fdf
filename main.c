@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 00:15:20 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:19:59 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include "fdf.h"
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+t_fdf *fdf;
 
 int	create_trgb(int t, int r, int g, int b)
 {
@@ -60,22 +63,29 @@ t_data gen_rgb_img(void *mlx)
 
 int keyboardHandler(int code)
 {
-	printf("key pressed %d\n", code);
+	//ESC 65307
+	//r 114
+
+	if (code == 65307)
+		exit(0);
+	if (code == 114)
+	{
+		t_data img = gen_rgb_img(fdf->mlx);
+		mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
+	}
 	return (0);
 }
 
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
 	t_data	img;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 500, 500, "Hello world!");
+	fdf->mlx = mlx_init();
+	fdf->mlx_win = mlx_new_window(fdf->mlx, 500, 500, "Hello world!");
 
-	img = gen_rgb_img(mlx);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	img = gen_rgb_img(fdf->mlx);
+	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
 
-	mlx_hook(mlx_win, 2, 1L<<0, keyboardHandler, mlx);
-	mlx_loop(mlx);
+	mlx_hook(fdf->mlx_win, 2, 1L<<0, keyboardHandler, fdf->mlx);
+	mlx_loop(fdf->mlx);
 }
