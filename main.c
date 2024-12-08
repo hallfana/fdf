@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/08 19:55:19 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/08 19:56:12 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ int	main(void)
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	for(int x = 10; x < 1200; x+=2)
+	for(int x = 10; x < 1200; x+=5)
 	{
 		int rgb = generate_rgb();
-		for (int y = 10 ; y < 200 ; y++)
+		for (int x2 = 0; x2 <= 10; x2=+2)
 		{
-			mlx_pixel_put(mlx, mlx_win, x, y, rgb);
-		}
-		for (int y = 10 ; y < 200 ; y++)
+			for (int y = 10 ; y < 200 ; y++)
 		{
-			mlx_pixel_put(mlx, mlx_win, x + 1, y, rgb);
+			mlx_pixel_put(mlx, mlx_win, x + x2, y, rgb);
 		}
+		}
+		
 	}
 	mlx_loop(mlx);
 }
