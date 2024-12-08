@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 00:22:43 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:22:55 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int keyboardHandler(int code)
 		free(fdf->mlx);
 		free(fdf->mlx_win);
 		free(fdf);
-		exit(0);
+		exit(1);
 	}
 	if (code == 114)
 	{
