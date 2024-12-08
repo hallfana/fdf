@@ -6,13 +6,14 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/08 20:20:08 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/08 20:21:41 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./mlx_linux/mlx.h"
 #include "fdf.h"
 #include <math.h>
+#include <unistd.h>
 
 int	create_trgb(int t, int r, int g, int b)
 {
@@ -82,6 +83,7 @@ int	main(void)
 	{
 		img = gen_img(mlx);
 		mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+		usleep(5000);
 	}
 	mlx_loop(mlx);
 }
