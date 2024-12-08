@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/08 19:53:21 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/08 19:54:31 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	create_trgb(int t, int r, int g, int b)
 
 int generate_rgb()
 {
-	// generate rgb gradient for each pixel of my banner each time i call this function i wil get the next color
+	// get all the rgb color from the gratient each time i call the function
 	static int i = 0;
 	int r = (int)(sin(0.3 * i + 0) * 127 + 128);
 	int g = (int)(sin(0.3 * i + 2) * 127 + 128);
