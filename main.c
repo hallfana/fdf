@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/08 19:43:32 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/08 19:44:23 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int generate_rgb()
 	static int i = 0;
 	int m_pi = 3.14159265358979323846;
  
-	int red = (128.0 + sin(i * 2 * m_pi / 256 + 0.0) * 127.0);
-	int green = (128.0 + sin(i * 2 * m_pi / 256 + 2 * m_pi / 3.0) * 127.0);
-	int blue = (128.0 + sin(i * 2 * m_pi / 256 + 4 * m_pi / 3.0) * 127.0);
+	int red = (128.0 + sin(i * 2 * m_pi / 256 + 0.0) * 1.0);
+	int green = (128.0 + sin(i * 2 * m_pi / 256 + 2 * m_pi / 3.0) * 1.0);
+	int blue = (128.0 + sin(i * 2 * m_pi / 256 + 4 * m_pi / 3.0) * 1.0);
 
 	i++;
 	if (i >= 256)
