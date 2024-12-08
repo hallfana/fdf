@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/08 20:24:56 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/08 20:26:04 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-t_data gen_img(void *mlx)
+t_data gen_rgb_img(void *mlx)
 {
 	t_data img;
 	img.img = mlx_new_image(mlx, 1920, 1080);
@@ -65,23 +65,9 @@ int	main(void)
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	/*img.img = mlx_new_image(mlx, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	for(int x = 10; x < 1200; x+=2)
-	{
-		int rgb = generate_rgb();
-		for (int x2 = 0; x2 < 2; x2++)
-		{
-			for (int y = 10 ; y < 200 ; y++)
-			{
-				my_mlx_pixel_put(&img, x + x2, y, rgb);
-			}
-		}
-	}*/
-	while (1)
-	{
-		img = gen_img(mlx);
-		mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	}
+
+	img = gen_rgb_img(mlx);
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	
 	mlx_loop(mlx);
 }
