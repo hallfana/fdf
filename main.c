@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/08 19:48:24 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/08 19:48:34 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int	main(void)
 		int j = generate_rgb();
 		for(int xx = 10; xx < 10; xx++)
 		{
-			for (int y = 10 ; y < 50 ; y++)
-			{
-				mlx_pixel_put(mlx, mlx_win, x, y, j);
-			};
+			mlx_pixel_put(mlx, mlx_win, x, xx, j);
 		}
-		
+		for (int y = 10 ; y < 50 ; y++)
+		{
+			mlx_pixel_put(mlx, mlx_win, x, y, j);
+		}
 	}
 	mlx_loop(mlx);
 }
