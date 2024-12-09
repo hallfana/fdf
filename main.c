@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 03:22:04 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:23:03 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,21 @@ int	main(int argc, char **argv)
 	printf("fd: %d\n", fd);
 	
 	// draw the points
+	int offset_x = WINX / 2 - isometric_format_x(tab.tab[tab.height / 2][tab.width / 2].x, tab.tab[tab.height / 2][tab.width / 2].y, tab.tab[tab.height / 2][tab.width / 2].z);
+	int offset_y = WINY / 2 - isometric_format_y(tab.tab[tab.height / 2][tab.width / 2].x, tab.tab[tab.height / 2][tab.width / 2].y, tab.tab[tab.height / 2][tab.width / 2].z);
+
+	for (int i = 0; i < tab.height; i++)
+	{
+		for (int j = 0; j < tab.width; j++)
+		{
+			my_mlx_pixel_put(
+				&img,
+				isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + offset_x,
+				isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + offset_y,
+				tab.tab[i][j].color
+			);
+		}
+	}
 	for (int i = 0; i < tab.height; i++)
 	{
 		for (int j = 0; j < tab.width; j++)
