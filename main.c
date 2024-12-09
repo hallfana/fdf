@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 02:17:45 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:21:05 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,23 @@ int keyboardHandler(int code)
 	return (0);
 }
 
+int  isometric_format_x(int x, int y, int z)
+{
+	int tmp;
+
+	tmp = x;
+	(void)z;
+	return (tmp - y) * cos(0.523599);
+}
+
+int  isometric_format_y(int x, int y, int z)
+{
+	int tmp;
+
+	tmp = x;
+	return (tmp + y) * sin(0.523599) - z;
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	img;
@@ -156,8 +173,8 @@ int	main(int argc, char **argv)
 	for (int i = 0; i < tab.height; i++)
 	{
 		for (int j = 0; j < tab.width; j++)
-		{
-			my_mlx_pixel_put(&img, tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].color);
+		{;
+			my_mlx_pixel_put(&img, isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z), isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z), tab.tab[i][j].color);
 		}
 	}
 
