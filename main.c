@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 02:17:02 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:17:09 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	main(int argc, char **argv)
 	t_data	img;
 	t_tab	tab;
 	fdf = malloc(sizeof(t_fdf));
-	fdf->zoom = 50;
+	fdf->zoom = 5;
 
 	(void)argc;
 	fdf->mlx = mlx_init();
