@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 02:31:53 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:33:26 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,20 +199,20 @@ int	main(int argc, char **argv)
 			{
 				my_mlx_line_put(
 					img,
-					isometric_format_x(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + 500,
-					isometric_format_y(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + 500,
-					isometric_format_x(tab.tab[m][n + 1].x, tab.tab[m][n + 1].y, tab.tab[m][n + 1].z) + 500,
-					isometric_format_y(tab.tab[m][n + 1].x, tab.tab[m][n + 1].y, tab.tab[m][n + 1].z) + 500
+					isometric_format_x(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + WINX / 2,
+					isometric_format_y(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + WINX / 2,
+					isometric_format_x(tab.tab[m][n + 1].x, tab.tab[m][n + 1].y, tab.tab[m][n + 1].z) + WINX / 2,
+					isometric_format_y(tab.tab[m][n + 1].x, tab.tab[m][n + 1].y, tab.tab[m][n + 1].z) + WINX / 2
 				);
 			}
 			if (m < tab.height - 1)
 			{
 				my_mlx_line_put(
 					img,
-					isometric_format_x(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + 500,
-					isometric_format_y(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + 500,
-					isometric_format_x(tab.tab[m + 1][n].x, tab.tab[m + 1][n].y, tab.tab[m + 1][n].z) + 500,
-					isometric_format_y(tab.tab[m + 1][n].x, tab.tab[m + 1][n].y, tab.tab[m + 1][n].z) + 500
+					isometric_format_x(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + WINX / 2,
+					isometric_format_y(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + WINX / 2,
+					isometric_format_x(tab.tab[m + 1][n].x, tab.tab[m + 1][n].y, tab.tab[m + 1][n].z) + WINX / 2,
+					isometric_format_y(tab.tab[m + 1][n].x, tab.tab[m + 1][n].y, tab.tab[m + 1][n].z) + WINX / 2
 				);
 			}
 		}
