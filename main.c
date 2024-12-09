@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 16:20:48 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:21:42 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	my_mlx_line_put(t_data img, int x1, int y1, int x2, int y2)
 
 	while (1)
 	{
-		my_mlx_pixel_put(&img, x1, y1, create_trgb(0, 0, 150, 150));
+		//my_mlx_pixel_put(&img, x1, y1, create_trgb(0, 0, 150, 150));
+		my_mlx_pixel_put(&img, x1, y1, generate_rgb());
 		if (x1 == x2 && y1 == y2)
 			break;
 		int e2 = 2 * err;
@@ -193,7 +194,7 @@ int	main(int argc, char **argv)
 		isometric_format_y(tab.tab[2][1].x, tab.tab[2][1].y, tab.tab[2][1].z) + 500
 	);*/
 	// Connect each point to the adjacent points
-	/*for (int m = 0; m < tab.height; m++)
+	for (int m = 0; m < tab.height; m++)
 	{
 		for (int n = 0; n < tab.width; n++)
 		{
@@ -214,7 +215,7 @@ int	main(int argc, char **argv)
 				my_mlx_line_put(img, x1, y1, x2, y2);
 			}
 		}
-	}*/
+	}
 
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
 	
