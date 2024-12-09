@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:05:57 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/09 03:24:30 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:17:44 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	gnl_ft_init(t_gnl *f);
 size_t	gnl_ft_strlen(const char *s);
 char	*gnl_ft_substr(char *s, unsigned int start, size_t len);
 void	gnl_cleanup_fd(t_gnl *f);
-
 
 // SHITTY FDF HERE //
 typedef struct	s_data {
