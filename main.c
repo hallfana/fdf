@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 03:14:39 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:14:57 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ int	main(int argc, char **argv)
 	int offset_y = isometric_format_y(tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[0][0].z) -
 		isometric_format_y(tab.tab[tab.height - 1][tab.width - 1].x, tab.tab[tab.height - 1][tab.width - 1].y, tab.tab[tab.height - 1][tab.width - 1].z);
 		
+	printf("%d, %d\n", offset_x, offset_y);
 	// draw the points
 	for (int i = 0; i < tab.height; i++)
 	{
