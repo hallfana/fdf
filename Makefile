@@ -11,4 +11,4 @@ OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
 	git add .; git commit -m "auto"; git push
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -Ilibft-lXext -lX11 -lm -lz -o $(NAME)	
+	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -Ilibft -lXext -lX11 -lm -lz -o $(NAME)	
