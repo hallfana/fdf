@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 00:56:24 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:17:57 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,25 +73,71 @@ int keyboardHandler(int code)
 		free(fdf);
 		exit(1);
 	}
-	if (code == 114)
+	/*if (code == 114)
 	{
 		t_data img = gen_rgb_img(fdf->mlx);
 		mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
-	}
+	}*/
 	return (0);
 }
 
 int	main(void)
 {
-	printf("Hello world!%ld\n", sizeof(t_point));
-	t_data	img;
+	//t_data	img;
+	t_tab	tab;
 	fdf = malloc(sizeof(t_fdf));
 
 	fdf->mlx = mlx_init();
 	fdf->mlx_win = mlx_new_window(fdf->mlx, 500, 500, "Hello world!");
 
-	img = gen_rgb_img(fdf->mlx);
-	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
+	//img = gen_rgb_img(fdf->mlx);
+	//mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
+
+	tab.width = 3;
+	tab.height = 3;
+	tab.tab = malloc(sizeof(t_point *) * tab.height);
+	for (int i = 0; i < tab.height; i++)
+	{
+		tab.tab[i] = malloc(sizeof(t_point) * tab.width);
+	}
+
+	// use gnl to read from a file 
+	// and fill the tab with the values
+	int fd = open("input_file.txt", O_RDONLY);
+	if (fd < 0)
+	{
+		perror("Error opening file");
+		exit(EXIT_FAILURE);
+	}
+	
+	// use gnl to read from a file
+	
+	for (int i = 0; i < tab.height; i++)
+	{
+		for (int j = 0; j < tab.width; j++)
+		{
+			char *line = get_next_line(fd);
+			if (!line)
+			{
+				perror("Error reading file");
+				exit(EXIT_FAILURE);
+			}
+			tab.tab[i][j].x = i;
+			tab.tab[i][j].y = j;
+			tab.tab[i][j].z = atoi(line);
+			tab.tab[i][j].color = generate_rgb();
+			free(line);
+		}
+	}
+
+	// draw the points
+	for (int i = 0; i < tab.height; i++)
+	{
+		for (int j = 0; j < tab.width; j++)
+		{
+			printf("x: %d, y: %d, z: %d\n", i, j, tab.tab[i][j].z);
+		}
+	}
 
 	mlx_hook(fdf->mlx_win, 2, 1L<<0, keyboardHandler, fdf->mlx);
 	mlx_loop(fdf->mlx);
