@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 03:23:03 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:23:46 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,18 +185,6 @@ int	main(int argc, char **argv)
 			);
 		}
 	}
-	for (int i = 0; i < tab.height; i++)
-	{
-		for (int j = 0; j < tab.width; j++)
-		{
-			my_mlx_pixel_put(
-				&img,
-				isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + WINX / 2,
-				isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + WINY / 2,
-				tab.tab[i][j].color
-			);
-		}
-	}
 	
 	/*my_mlx_line_put(
 		img,
@@ -212,18 +200,18 @@ int	main(int argc, char **argv)
 		{
 			if (n < tab.width - 1)
 			{
-				int x1 = isometric_format_x(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + WINX / 2;
-				int y1 = isometric_format_y(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + WINY / 2;
-				int x2 = isometric_format_x(tab.tab[m][n + 1].x, tab.tab[m][n + 1].y, tab.tab[m][n + 1].z) + WINX / 2;
-				int y2 = isometric_format_y(tab.tab[m][n + 1].x, tab.tab[m][n + 1].y, tab.tab[m][n + 1].z) + WINY / 2;
+				int x1 = isometric_format_x(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + offset_x;
+				int y1 = isometric_format_y(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + offset_y;
+				int x2 = isometric_format_x(tab.tab[m][n + 1].x, tab.tab[m][n + 1].y, tab.tab[m][n + 1].z) + offset_x;
+				int y2 = isometric_format_y(tab.tab[m][n + 1].x, tab.tab[m][n + 1].y, tab.tab[m][n + 1].z) + offset_y;
 				my_mlx_line_put(img, x1, y1, x2, y2);
 			}
 			if (m < tab.height - 2)
 			{
-				int x1 = isometric_format_x(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + WINX / 2;
-				int y1 = isometric_format_y(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + WINY / 2;
-				int x2 = isometric_format_x(tab.tab[m + 1][n].x, tab.tab[m + 1][n].y, tab.tab[m + 1][n].z) + WINX / 2;
-				int y2 = isometric_format_y(tab.tab[m + 1][n].x, tab.tab[m + 1][n].y, tab.tab[m + 1][n].z) + WINY / 2;
+				int x1 = isometric_format_x(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + offset_x;
+				int y1 = isometric_format_y(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + offset_y;
+				int x2 = isometric_format_x(tab.tab[m + 1][n].x, tab.tab[m + 1][n].y, tab.tab[m + 1][n].z) + offset_x;
+				int y2 = isometric_format_y(tab.tab[m + 1][n].x, tab.tab[m + 1][n].y, tab.tab[m + 1][n].z) + offset_y;
 				my_mlx_line_put(img, x1, y1, x2, y2);
 			}
 		}
