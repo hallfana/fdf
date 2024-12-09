@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 02:25:13 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:25:33 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,8 +176,8 @@ int	main(int argc, char **argv)
 		{;
 			my_mlx_pixel_put(
 				&img,
-				isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z),
-				isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z),
+				isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + 500,
+				isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + 500,
 				tab.tab[i][j].color
 			);
 		}
@@ -185,10 +185,10 @@ int	main(int argc, char **argv)
 	
 	my_mlx_line_put(
 		img,
-		isometric_format_x(tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[0][0].z),
-		isometric_format_y(tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[0][0].z),
-		isometric_format_x(tab.tab[2][1].x, tab.tab[2][1].y, tab.tab[2][1].z),
-		isometric_format_y(tab.tab[2][1].x, tab.tab[2][1].y, tab.tab[2][1].z)
+		isometric_format_x(tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[0][0].z) + 500,
+		isometric_format_y(tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[0][0].z) + 500,
+		isometric_format_x(tab.tab[2][1].x, tab.tab[2][1].y, tab.tab[2][1].z) + 500,
+		isometric_format_y(tab.tab[2][1].x, tab.tab[2][1].y, tab.tab[2][1].z) + 500
 	);
 
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
