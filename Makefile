@@ -2,7 +2,7 @@ NAME=fdf
 
 CC = gcc
 
-SRC = main.c gnl.c gnl1.c
+SRC = main.c gnl.c gnl1.c mlx_utils.c handler.c
 
 OBJ = $(SRC:.c=.o)
 

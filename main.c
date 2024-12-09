@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 16:21:42 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:46:47 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,43 +30,6 @@ int generate_rgb()
 	return create_trgb(0, r, g, b);
 }
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-void	my_mlx_line_put(t_data img, int x1, int y1, int x2, int y2)
-{
-	// taux d'acroissement de la line
-	int dx = abs(x2 - x1);
-	int sx = x1 < x2 ? 1 : -1;
-	int dy = -abs(y2 - y1);
-	int sy = y1 < y2 ? 1 : -1;
-	int err = dx + dy;
-
-	while (1)
-	{
-		//my_mlx_pixel_put(&img, x1, y1, create_trgb(0, 0, 150, 150));
-		my_mlx_pixel_put(&img, x1, y1, generate_rgb());
-		if (x1 == x2 && y1 == y2)
-			break;
-		int e2 = 2 * err;
-		if (e2 >= dy)
-		{
-			err += dy;
-			x1 += sx;
-		}
-		if (e2 <= dx)
-		{
-			err += dx;
-			y1 += sy;
-		}
-	}
-}
-
 t_data gen_rgb_img(void *mlx)
 {
 	t_data img;
@@ -84,26 +47,6 @@ t_data gen_rgb_img(void *mlx)
 		}
 	}
 	return img;
-}
-
-int keyboardHandler(int code)
-{
-	//ESC 65307
-	//r 114
-
-	if (code == 65307)
-	{
-		mlx_destroy_window(fdf->mlx, fdf->mlx_win);
-		free(fdf->mlx);
-		free(fdf);
-		exit(1);
-	}
-	/*if (code == 114)
-	{
-		t_data img = gen_rgb_img(fdf->mlx);
-		mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
-	}*/
-	return (0);
 }
 
 int  isometric_format_x(int x, int y, int z)

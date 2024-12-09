@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:05:57 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/09 16:17:44 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:47:37 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,9 @@ typedef struct s_tab {
 	int		width;
 	int		height;
 }				t_tab;
+
+int		keyboardHandler(int code, void *param);
+void	my_mlx_line_put(t_data img, int x1, int y1, int x2, int y2);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif
