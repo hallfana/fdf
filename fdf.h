@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:05:57 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/09 02:05:25 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:06:57 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 #  define BUFFER_SIZE 32
 # endif
 
-# define WINX 1920	
-# define WINY 1080
+# define WINX 500
+# define WINY 500
 
 typedef struct s_gnl
 {
