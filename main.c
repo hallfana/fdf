@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 16:54:55 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:57:20 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ int	main(int argc, char **argv)
 		char **split = ft_split(line, ' ');
 		for (j = 0; j < tab.width; j++)
 		{
-			tab.tab[i][j].x = j * 20;
-			tab.tab[i][j].y = i * 20;
+			tab.tab[i][j].x = j * 50;
+			tab.tab[i][j].y = i * 50;
 			tab.tab[i][j].z = ft_atoi(split[j]);
 			tab.tab[i][j].color = generate_rgb();
 		}
