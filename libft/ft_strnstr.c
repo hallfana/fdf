@@ -3,37 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 18:27:37 by tristan           #+#    #+#             */
-/*   Updated: 2024/11/04 11:59:43 by tcarlier         ###   ########.fr       */
+/*   Created: 2024/11/05 17:17:24 by samberna          #+#    #+#             */
+/*   Updated: 2024/11/05 17:17:48 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	l;
 
 	i = 0;
-	if ((!haystack || !needle) && len == 0)
+	if ((!big || !little) && len == 0)
 		return (NULL);
-	if (*needle == '\0')
-		return ((char *)haystack);
+	if (ft_strlen(little) == '\0')
+		return ((char *)big);
 	if ((int)len < 0)
-		return (ft_strnstr(haystack, needle, ft_strlen((char *)haystack)));
-	if (len == 1 && haystack[0] == needle[0])
-		return ((char *)haystack);
-	while ((char)haystack[i] != '\0' && i < len)
+		return (ft_strnstr(big, little, ft_strlen(big)));
+	if (len == 1 && big[0] == little[0])
+		return ((char *)big);
+	while ((char)big[i] && i < (int)len - 1)
 	{
-		j = 0;
-		while ((char)haystack[i + j] == (char)needle[j] && i + j < len)
+		l = 0;
+		while ((char)big[i + l] == (char)little[l])
 		{
-			if (j == ft_strlen((char *)needle) - 1)
-				return ((char *)(haystack + i));
-			j++;
+			if (l == (int)ft_strlen((char *)little) - 1 && i + l < (int)len)
+				return ((char *)(big + i));
+			l++;
 		}
 		i++;
 	}

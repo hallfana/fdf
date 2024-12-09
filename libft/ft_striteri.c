@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:16:03 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/11/06 15:06:31 by tcarlier         ###   ########.fr       */
+/*   Created: 2024/11/07 17:16:50 by samberna          #+#    #+#             */
+/*   Updated: 2024/11/07 17:17:08 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

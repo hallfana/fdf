@@ -3,67 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 19:28:24 by tristan           #+#    #+#             */
-/*   Updated: 2024/11/04 11:58:19 by tcarlier         ###   ########.fr       */
+/*   Created: 2024/11/04 19:02:04 by samberna          #+#    #+#             */
+/*   Updated: 2024/11/06 13:39:48 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int	count_nb(int n)
+int	nblen(long n)
 {
-	long int	i;
-	int			count;
+	int	len;
 
-	count = 0;
-	i = n;
+	len = 0;
 	if (n < 0)
 	{
-		count++;
-		i = -i;
+		n *= -1;
+		len++;
 	}
-	while (i > 9)
+	while (n > 0)
 	{
-		i = i / 10;
-		count++;
+		n /= 10;
+		len++;
 	}
-	return (count + 1);
-}
-
-void	ft_sign(int *sign, long int *i, char **res)
-{
-	if (*i < 0)
-	{
-		*i = *i * -1;
-		*res[0] = '-';
-		*sign = 1;
-	}
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char		*res;
-	long int	i;
-	int			k;
-	int			sign;
+	long	nb;
+	char	*dst;
+	int		i;
 
-	res = (char *)malloc(count_nb(n) * sizeof(char) + 1);
-	if (!res)
+	if (n == 0)
+		return (ft_strdup("0"));
+	dst = (char *)malloc(sizeof(char) * (nblen((long)n) + 1));
+	if (!dst)
 		return (NULL);
-	i = n;
-	k = 0;
-	sign = 0;
-	ft_sign(&sign, &i, &res);
-	while (i > 9)
+	nb = (long)n;
+	if (nb < 0)
 	{
-		res[count_nb(n) - k - 1] = i % 10 + '0';
-		i = i / 10;
-		k++;
+		dst[0] = '-';
+		nb *= -1;
 	}
-	res[sign] = i + '0';
-	res[count_nb(n)] = '\0';
-	return (res);
+	if (!dst)
+		return (NULL);
+	i = nblen((long)n) - 1;
+	while (nb > 0)
+	{
+		dst[i--] = (nb % 10) + '0';
+		nb /= 10;
+	}
+	dst[nblen((long)n)] = '\0';
+	return (dst);
 }

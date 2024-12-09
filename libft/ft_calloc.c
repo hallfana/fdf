@@ -3,30 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 23:55:44 by tristan           #+#    #+#             */
-/*   Updated: 2024/11/04 11:58:05 by tcarlier         ###   ########.fr       */
+/*   Created: 2024/11/05 17:42:04 by samberna          #+#    #+#             */
+/*   Updated: 2024/11/05 17:42:22 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*res;
+	void	*ptr;
+	size_t	i;
 
-	if (count == SIZE_MAX || size == SIZE_MAX
-		|| ((long)size < 0 && (long)count < 0) || count * size >= 2147483647)
+	if (nmemb * size >= 2147483647 || ((int)nmemb < 0 && (int)size < 0))
 		return (NULL);
-	if (count == 0 || size == 0)
+	if (nmemb == 0 || size == 0)
 	{
-		res = malloc(1);
-		return (res);
+		ptr = malloc(1);
+		return (ptr);
 	}
-	res = (void *)malloc(count * size);
-	if (!res)
+	i = 0;
+	ptr = malloc(nmemb * size);
+	if (!ptr)
 		return (NULL);
-	ft_bzero(res, count * size);
-	return (res);
+	while (i < (nmemb * size))
+	{
+		((char *)ptr)[i] = 0;
+		i++;
+	}
+	return (ptr);
 }

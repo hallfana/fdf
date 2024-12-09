@@ -3,79 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 18:54:39 by tristan           #+#    #+#             */
-/*   Updated: 2024/11/06 15:06:52 by tcarlier         ###   ########.fr       */
+/*   Created: 2024/11/05 17:23:32 by samberna          #+#    #+#             */
+/*   Updated: 2024/11/06 15:46:12 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_words(char *s, char c)
+int	ft_countwords(char const *s, int c)
 {
 	int	i;
-	int	count;
+	int	j;
+	int	in;
 
 	i = 0;
-	count = 0;
+	j = 0;
+	in = 0;
 	while (s[i])
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != '\0')
-			count++;
-		while (s[i] != c && s[i])
-			i++;
-	}
-	if (s[i - 1] != c)
-		count++;
-	return (count);
-}
-
-char	*ft_strndup(char *s1, int len)
-{
-	char	*s2;
-	size_t	i;
-
-	i = 0;
-	s2 = (char *)malloc((len + 1) * sizeof(char));
-	if (!s2)
-		return (NULL);
-	while (s1[i] && (int)i < len)
-	{
-		s2[i] = s1[i];
+		if (s[i] != (char)c && in != 1)
+		{
+			in = 1;
+			j++;
+		}
+		if (s[i] == (char)c && in == 1)
+			in = 0;
 		i++;
 	}
-	s2[i] = '\0';
-	return (s2);
+	return (j);
 }
 
-char	**ft_split(char const *s1, char c)
+char	**ft_split(char const *str, char c)
 {
-	char	**res;
+	int		i;
 	int		s;
 	int		e;
-	int		k;
+	char	**dst;
 
-	k = 0;
+	if (!str)
+		return (NULL);
+	dst = (char **)malloc(sizeof(char *) * (ft_countwords(str, (int)c) + 1));
+	if (!dst)
+		return (NULL);
+	i = 0;
 	s = 0;
-	if (!s1)
-		return (NULL);
-	res = (char **)malloc((count_words((char *)s1, c) + 1) * sizeof(char *));
-	if (!res)
-		return (NULL);
-	while (k < count_words((char *)s1, c) && s1[s])
+	while (str[s] && i < ft_countwords(str, (int)c))
 	{
-		while (s1[s] == c && s1[s])
+		while (str[s] == c && str[s])
 			s++;
 		e = s;
-		while (s1[e] != c && s1[e])
+		while (str[e] != c && str[e])
 			e++;
-		res[k] = ft_strndup((char *)s1 + s, e - s);
-		k++;
+		dst[i] = ft_strndup(str + s, e - s);
 		s = e;
+		i++;
 	}
-	res[k] = 0;
-	return (res);
+	dst[i] = 0;
+	return (dst);
 }

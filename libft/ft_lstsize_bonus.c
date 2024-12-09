@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 17:32:01 by tristan           #+#    #+#             */
-/*   Updated: 2024/11/04 11:59:07 by tcarlier         ###   ########.fr       */
+/*   Created: 2024/11/05 15:31:13 by samberna          #+#    #+#             */
+/*   Updated: 2024/11/05 17:36:33 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+int	ft_lstsize(t_list *lst)
 {
 	size_t	i;
 
 	i = 0;
-	while (src[i])
+	while (lst)
 	{
-		dst[i] = src[i];
+		lst = lst->next;
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (i);
 }

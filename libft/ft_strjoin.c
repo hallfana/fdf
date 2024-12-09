@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 18:09:42 by tristan           #+#    #+#             */
-/*   Updated: 2024/11/06 14:55:39 by tcarlier         ###   ########.fr       */
+/*   Created: 2024/11/05 17:20:41 by samberna          #+#    #+#             */
+/*   Updated: 2024/11/06 15:44:43 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,25 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*res;
 	size_t	i;
-	size_t	j;
+	char	*str;
 
 	if (!s1 || !s2)
 		return (NULL);
 	i = 0;
-	j = 0;
-	res = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) - 1) * sizeof(char));
-	if (!res)
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
 		return (NULL);
-	while (s1[i])
+	while (i < ft_strlen(s1))
 	{
-		res[i] = s1[i];
+		str[i] = s1[i];
 		i++;
 	}
-	while (s2[j])
+	while (i < (ft_strlen(s1) + ft_strlen(s2)))
 	{
-		res[i] = s2[j];
-		j++;
+		str[i] = s2[i - ft_strlen(s1)];
 		i++;
 	}
-	res[i] = '\0';
-	return (res);
+	str[i] = 0;
+	return (str);
 }

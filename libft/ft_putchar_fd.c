@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 18:33:18 by tristan           #+#    #+#             */
-/*   Updated: 2024/11/04 11:58:42 by tcarlier         ###   ########.fr       */
+/*   Created: 2024/11/05 02:26:10 by samberna          #+#    #+#             */
+/*   Updated: 2024/11/06 13:28:01 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
