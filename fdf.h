@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:05:57 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/09 01:38:05 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:46:37 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include "./mlx_linux/mlx.h"
+# include "./libft/libft.h"
+# include <math.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32

@@ -6,16 +6,11 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 01:43:44 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:46:26 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./mlx_linux/mlx.h"
-#include "./libft/libft.h"
 #include "fdf.h"
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 t_fdf *fdf;
 
