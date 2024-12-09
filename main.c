@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 03:12:58 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:13:30 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,12 @@ int	main(int argc, char **argv)
 		isometric_format_y(tab.tab[tab.height - 1][tab.width - 1].x, tab.tab[tab.height - 1][tab.width - 1].y, tab.tab[tab.height - 1][tab.width - 1].z);
 		
 	// draw the points
+	my_mlx_pixel_put(
+				&img,
+				isometric_format_x(tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[0][0].z) + WINX / 2 - offset_x / 2,
+				isometric_format_y(tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[0][0].z) + WINY / 2 - offset_y / 2,
+				tab.tab[i][j].color
+			);
 	for (int i = 0; i < tab.height; i++)
 	{
 		for (int j = 0; j < tab.width; j++)
