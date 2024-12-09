@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 01:17:57 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:20:10 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,13 @@ int keyboardHandler(int code)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	//t_data	img;
 	t_tab	tab;
 	fdf = malloc(sizeof(t_fdf));
 
+	(void)argc;
 	fdf->mlx = mlx_init();
 	fdf->mlx_win = mlx_new_window(fdf->mlx, 500, 500, "Hello world!");
 
@@ -103,7 +104,7 @@ int	main(void)
 
 	// use gnl to read from a file 
 	// and fill the tab with the values
-	int fd = open("input_file.txt", O_RDONLY);
+	int fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
 		perror("Error opening file");
