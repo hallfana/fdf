@@ -6,11 +6,12 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 01:22:52 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:39:39 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./mlx_linux/mlx.h"
+#include "./libft/libft.h"
 #include "fdf.h"
 #include <math.h>
 #include <stdio.h>
@@ -102,37 +103,31 @@ int	main(int argc, char **argv)
 		tab.tab[i] = malloc(sizeof(t_point) * tab.width);
 	}
 
-	// use gnl to read from a file 
-	// and fill the tab with the values
 	int fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
 		perror("Error opening file");
 		exit(EXIT_FAILURE);
 	}
-	
-	// use gnl to read from a file
-	
-	printf("fd: %d\n", fd)
-;
-	for (int i = 0; i < tab.height; i++)
+
+	int i = 0;
+	int j = 0;
+	char *line;
+	while ((line = get_next_line(fd)))
 	{
-		for (int j = 0; j < tab.width; j++)
+		char **split = ft_split(line, ' ');
+		for (j = 0; j < tab.width; j++)
 		{
-			char *line = get_next_line(fd);
-			if (!line)
-			{
-				perror("Error reading file");
-				exit(EXIT_FAILURE);
-			}
-			tab.tab[i][j].x = i;
-			tab.tab[i][j].y = j;
-			tab.tab[i][j].z = atoi(line);
-			tab.tab[i][j].color = generate_rgb();
-			free(line);
+			tab.tab[i][j].x = j;
+			tab.tab[i][j].y = i;
+			tab.tab[i][j].z = ft_atoi(split[j]);
+			tab.tab[i][j].color = 0x00FF00;
 		}
+		i++;
 	}
 
+	printf("fd: %d\n", fd);	
+ 
 	// draw the points
 	for (int i = 0; i < tab.height; i++)
 	{

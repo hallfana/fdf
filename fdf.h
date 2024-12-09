@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:05:57 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/09 01:11:36 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:38:05 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ typedef struct s_gnl
 }	t_gnl;
 
 char	*get_next_line(int fd);
-char	*ft_strdup(const char *s);
-void	ft_init(t_gnl *f);
-size_t	ft_strlen(const char *s);
-char	*ft_substr(char *s, unsigned int start, size_t len);
-void	cleanup_fd(t_gnl *f);
+char	*gnl_ft_strdup(const char *s);
+void	gnl_ft_init(t_gnl *f);
+size_t	gnl_ft_strlen(const char *s);
+char	*gnl_ft_substr(char *s, unsigned int start, size_t len);
+void	gnl_cleanup_fd(t_gnl *f);
 
 
 // SHITTY FDF HERE //

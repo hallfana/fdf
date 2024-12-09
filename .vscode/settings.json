@@ -15,6 +15,7 @@
 		"streambuf": "cpp",
 		"array": "cpp",
 		"functional": "cpp",
-		"tuple": "cpp"
+		"tuple": "cpp",
+		"libft.h": "c"
 	}
 }
