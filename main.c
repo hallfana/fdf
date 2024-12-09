@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 02:17:25 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:17:45 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ int	main(int argc, char **argv)
 	t_data	img;
 	t_tab	tab;
 	fdf = malloc(sizeof(t_fdf));
-	fdf->zoom = 1;
 
 	(void)argc;
 	fdf->mlx = mlx_init();
@@ -143,8 +142,8 @@ int	main(int argc, char **argv)
 		char **split = ft_split(line, ' ');
 		for (j = 0; j < tab.width; j++)
 		{
-			tab.tab[i][j].x = j * 20 * fdf->zoom + (500 - tab.width * 20 * fdf->zoom) / 2;
-			tab.tab[i][j].y = i * 20 * fdf->zoom + (500 - tab.height * 20 * fdf->zoom) / 2;
+			tab.tab[i][j].x = j * 20 + (500 - tab.width * 20) / 2;
+			tab.tab[i][j].y = i * 20 + (500 - tab.height * 20) / 2;
 			tab.tab[i][j].z = ft_atoi(split[j]);
 			tab.tab[i][j].color = create_trgb(0, 125, 125, 125);
 		}

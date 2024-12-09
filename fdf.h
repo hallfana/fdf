@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:05:57 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/09 02:16:31 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:17:35 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef struct	s_data {
 typedef struct s_fdf {
 	void	*mlx;
 	void	*mlx_win;
-	int		zoom;
 }				t_fdf;
 
 typedef struct s_point {
