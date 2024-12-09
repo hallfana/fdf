@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 03:02:15 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:02:47 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,8 +176,8 @@ int	main(int argc, char **argv)
 		{;
 			my_mlx_pixel_put(
 				&img,
-				isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z),
-				isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z),
+				isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + 10,
+				isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + 10,
 				tab.tab[i][j].color
 			);
 		}
