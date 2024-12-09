@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 01:53:22 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:55:36 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int keyboardHandler(int code)
 
 int	main(int argc, char **argv)
 {
-	//t_data	img;
+	t_data	img;
 	t_tab	tab;
 	fdf = malloc(sizeof(t_fdf));
 
@@ -87,6 +87,9 @@ int	main(int argc, char **argv)
 	fdf->mlx = mlx_init();
 	fdf->mlx_win = mlx_new_window(fdf->mlx, 500, 500, "Hello world!");
 
+	
+	img.img = mlx_new_image(fdf->mlx, 1920, 1080);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	//img = gen_rgb_img(fdf->mlx);
 	//mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
 
@@ -116,7 +119,7 @@ int	main(int argc, char **argv)
 			tab.tab[i][j].x = j + (j * 25) + 25;
 			tab.tab[i][j].y = i + (i * 25) + 25;
 			tab.tab[i][j].z = ft_atoi(split[j]);
-			tab.tab[i][j].color = 0x00FF00;
+			tab.tab[i][j].color = create_trgb(0, 125, 125, 125);
 		}
 		i++;
 	}
@@ -129,9 +132,12 @@ int	main(int argc, char **argv)
 		for (int j = 0; j < tab.width; j++)
 		{
 			printf("x: %d, y: %d, z: %d\n", tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z);
+			my_mlx_pixel_put(&img, tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].color);
 		}
 	}
 
+	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
+	
 	mlx_hook(fdf->mlx_win, 2, 1L<<0, keyboardHandler, fdf->mlx);
 	mlx_loop(fdf->mlx);
 }
