@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 01:55:55 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:56:12 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int	main(int argc, char **argv)
 	{
 		for (int j = 0; j < tab.width; j++)
 		{
-			printf("x: %d, y: %d, z: %d\n", tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z);
+			//printf("x: %d, y: %d, z: %d\n", tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z);
 			my_mlx_pixel_put(&img, tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].color);
 		}
 	}
