@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 03:03:14 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:04:00 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	my_mlx_line_put(t_data img, int x1, int y1, int x2, int y2)
 t_data gen_rgb_img(void *mlx)
 {
 	t_data img;
-	img.img = mlx_new_image(mlx, 1920, 1080);
+	img.img = mlx_new_image(mlx, WINX, WINY);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	for(int x = 0; x < 500; x+=1)
 	{
@@ -129,9 +129,9 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	fdf->mlx = mlx_init();
-	fdf->mlx_win = mlx_new_window(fdf->mlx, 1920, 1080, "Hello world!");
+	fdf->mlx_win = mlx_new_window(fdf->mlx, WINX, WINY, "Hello world!");
 
-	img.img = mlx_new_image(fdf->mlx, 1920, 1080);
+	img.img = mlx_new_image(fdf->mlx, WINX, WINY);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	//img = gen_rgb_img(fdf->mlx);
 	//mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
