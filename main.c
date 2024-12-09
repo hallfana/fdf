@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 01:59:17 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:59:27 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ int	main(int argc, char **argv)
 		}
 	}
 
-	my_mlx_line_put(img, tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[2][2].x, tab.tab[2][2].y);
+	my_mlx_line_put(img, tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[2][1].x, tab.tab[2][1].y);
 
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
 	
