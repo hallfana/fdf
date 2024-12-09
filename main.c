@@ -6,29 +6,13 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 16:46:47 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:49:53 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 t_fdf *fdf;
-
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int generate_rgb()
-{
-	// get all the rgb color from the gratient each time i call the function
-	static int i = 0;
-	int r = (int)(sin(0.01 * i + 0) * 127 + 128);
-	int g = (int)(sin(0.01 * i + 2) * 127 + 128);
-	int b = (int)(sin(0.01 * i + 4) * 127 + 128);
-	i++;
-	return create_trgb(0, r, g, b);
-}
 
 t_data gen_rgb_img(void *mlx)
 {
