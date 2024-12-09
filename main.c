@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 03:17:17 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:17:32 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ int	main(int argc, char **argv)
 			tab.tab[i][j].x = j * 20;
 			tab.tab[i][j].y = i * 20;
 			tab.tab[i][j].z = ft_atoi(split[j]);
-			tab.tab[i][j].color = create_trgb(0, 255, 0, 0);
+			tab.tab[i][j].color = create_trgb(0, 0, 255, 0);
 		}
 		i++;
 	}
