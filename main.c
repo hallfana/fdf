@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 03:04:00 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:11:52 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,15 +169,21 @@ int	main(int argc, char **argv)
 
 	printf("fd: %d\n", fd);	
  
+	int offset_x = isometric_format_x(tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[0][0].z) -
+		isometric_format_x(tab.tab[tab.height - 1][tab.width - 1].x, tab.tab[tab.height - 1][tab.width - 1].y, tab.tab[tab.height - 1][tab.width - 1].z);
+	int offset_y = isometric_format_y(tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[0][0].z) -
+		isometric_format_y(tab.tab[tab.height - 1][tab.width - 1].x, tab.tab[tab.height - 1][tab.width - 1].y, tab.tab[tab.height - 1][tab.width - 1].z);
+		
 	// draw the points
 	for (int i = 0; i < tab.height; i++)
 	{
 		for (int j = 0; j < tab.width; j++)
-		{;
+		{
+
 			my_mlx_pixel_put(
 				&img,
-				isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + WINX / 2,
-				isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + WINY / 2,
+				isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + WINX / 2 - offset_x,
+				isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + WINY / 2 + offset_y,
 				tab.tab[i][j].color
 			);
 		}
