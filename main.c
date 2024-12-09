@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 01:59:27 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:00:30 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,32 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	my_mlx_line_put(t_data img, int x1, int y1, int x2, int y2)
 {
-	int dx = x2 - x1;
-	int dy = y2 - y1;
-	int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-	float Xinc = dx / (float)steps;
-	float Yinc = dy / (float)steps;
-	float X = x1;
-	float Y = y1;
-	for (int i = 0; i <= steps; i++)
+	//  use Bresenham’s line drawing algorithm
+
+	int dx = abs(x2 - x1);
+	int sx = x1 < x2 ? 1 : -1;
+	int dy = -abs(y2 - y1);
+	int sy = y1 < y2 ? 1 : -1;
+	int err = dx + dy;
+	int e2;
+
+	while (1)
 	{
-		my_mlx_pixel_put(&img, X, Y, 0x00FF0000);
-		X += Xinc;
-		Y += Yinc;
-	}
+		my_mlx_pixel_put(&img, x1, y1, 0x00FF0000);
+		if (x1 == x2 && y1 == y2)
+			break;
+		e2 = 2 * err;
+		if (e2 >= dy)
+		{
+			err += dy;
+			x1 += sx;
+		}
+		if (e2 <= dx)
+		{
+			err += dx;
+			y1 += sy;
+		}
+	}	
 }
 
 t_data gen_rgb_img(void *mlx)
