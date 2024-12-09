@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 01:22:28 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:22:52 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ int	main(int argc, char **argv)
 	
 	// use gnl to read from a file
 	
+	printf("fd: %d\n", fd)
+;
 	for (int i = 0; i < tab.height; i++)
 	{
 		for (int j = 0; j < tab.width; j++)
