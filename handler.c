@@ -6,7 +6,7 @@
 /*   By: hallfana <hallfana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:43:01 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 16:52:00 by hallfana         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:52:12 by hallfana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int keyboardHandler(int code, t_fdf *fdf)
 	if (code == 65307)
 	{
 		mlx_destroy_window(fdf->mlx, fdf->mlx_win);
-		exit(1);
+		exit(0);
 	}
 	/*if (code == 114)
 	{
