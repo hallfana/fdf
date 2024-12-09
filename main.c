@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 03:12:46 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:12:58 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ int	main(int argc, char **argv)
 		isometric_format_y(tab.tab[2][1].x, tab.tab[2][1].y, tab.tab[2][1].z) + 500
 	);*/
 	// Connect each point to the adjacent points
-	for (int m = 0; m < tab.height; m++)
+	/*for (int m = 0; m < tab.height; m++)
 	{
 		for (int n = 0; n < tab.width; n++)
 		{
@@ -218,7 +218,7 @@ int	main(int argc, char **argv)
 				my_mlx_line_put(img, x1, y1, x2, y2);
 			}
 		}
-	}
+	}*/
 
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
 	
