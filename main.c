@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 02:21:05 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:24:21 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	fdf->mlx = mlx_init();
-	fdf->mlx_win = mlx_new_window(fdf->mlx, 500, 500, "Hello world!");
+	fdf->mlx_win = mlx_new_window(fdf->mlx, 1920, 1080, "Hello world!");
 
 	img.img = mlx_new_image(fdf->mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
@@ -174,11 +174,22 @@ int	main(int argc, char **argv)
 	{
 		for (int j = 0; j < tab.width; j++)
 		{;
-			my_mlx_pixel_put(&img, isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z), isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z), tab.tab[i][j].color);
+			my_mlx_pixel_put(
+				&img,
+				isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z),
+				isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z),
+				tab.tab[i][j].color
+			);
 		}
 	}
-
-	my_mlx_line_put(img, tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[2][1].x, tab.tab[2][1].y);
+	
+	my_mlx_line_put(
+		img,
+		isometric_format_x(tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[0][0].z),
+		isometric_format_y(tab.tab[0][0].x, tab.tab[0][0].y, tab.tab[0][0].z),
+		isometric_format_x(tab.tab[2][1].x, tab.tab[2][1].y, tab.tab[2][1].z),
+		isometric_format_y(tab.tab[2][1].x, tab.tab[2][1].y, tab.tab[2][1].z)
+	);
 
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img.img, 0, 0);
 	
