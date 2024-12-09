@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:46:48 by hallfana          #+#    #+#             */
-/*   Updated: 2024/12/09 02:29:54 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:31:53 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,28 +191,28 @@ int	main(int argc, char **argv)
 		isometric_format_y(tab.tab[2][1].x, tab.tab[2][1].y, tab.tab[2][1].z) + 500
 	);*/
 	// Connect each point to the adjacent points
-	for (int i = 0; i < tab.height; i++)
+	for (int m = 0; m < tab.height; m++)
 	{
-		for (int j = 0; j < tab.width; j++)
+		for (int n = 0; n < tab.width; n++)
 		{
-			if (j < tab.width - 1)
+			if (n < tab.width - 1)
 			{
 				my_mlx_line_put(
 					img,
-					isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + 500,
-					isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + 500,
-					isometric_format_x(tab.tab[i][j + 1].x, tab.tab[i][j + 1].y, tab.tab[i][j + 1].z) + 500,
-					isometric_format_y(tab.tab[i][j + 1].x, tab.tab[i][j + 1].y, tab.tab[i][j + 1].z) + 500
+					isometric_format_x(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + 500,
+					isometric_format_y(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + 500,
+					isometric_format_x(tab.tab[m][n + 1].x, tab.tab[m][n + 1].y, tab.tab[m][n + 1].z) + 500,
+					isometric_format_y(tab.tab[m][n + 1].x, tab.tab[m][n + 1].y, tab.tab[m][n + 1].z) + 500
 				);
 			}
-			if (i < tab.height - 1)
+			if (m < tab.height - 1)
 			{
 				my_mlx_line_put(
 					img,
-					isometric_format_x(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + 500,
-					isometric_format_y(tab.tab[i][j].x, tab.tab[i][j].y, tab.tab[i][j].z) + 500,
-					isometric_format_x(tab.tab[i + 1][j].x, tab.tab[i + 1][j].y, tab.tab[i + 1][j].z) + 500,
-					isometric_format_y(tab.tab[i + 1][j].x, tab.tab[i + 1][j].y, tab.tab[i + 1][j].z) + 500
+					isometric_format_x(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + 500,
+					isometric_format_y(tab.tab[m][n].x, tab.tab[m][n].y, tab.tab[m][n].z) + 500,
+					isometric_format_x(tab.tab[m + 1][n].x, tab.tab[m + 1][n].y, tab.tab[m + 1][n].z) + 500,
+					isometric_format_y(tab.tab[m + 1][n].x, tab.tab[m + 1][n].y, tab.tab[m + 1][n].z) + 500
 				);
 			}
 		}
