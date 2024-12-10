@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:25:23 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 19:02:50 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:03:09 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	_fdf_line_populate(t_fdf *fdf, char *line, int i)
 		//	fdf->tab[i][j].color = _fdf_atoi_base(tmp[1] + 2, "0123456789ABCDEF");
 		//}
 		//else
-		fdf->tab[i][j].color = 0x0000FF;
+		fdf->tab[i][j].color = _FDF_COLD;
 		j++;
 	}
 }
