@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:37:07 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 18:57:48 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:14:20 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_point	_fdf_calculate_iso(t_fdf *fdf, int i, int j);
 /* draw */
 void	_fdf_mlx_draw_pixel(t_fdf *fdf, int x, int y, int color);
 void	_fdf_mlx_draw_line(t_fdf *fdf, t_point point1, t_point point2);
+void	_fdf_mlx_draw_line_gradient(t_fdf *fdf, t_point point1, t_point point2);
 void	_fdf_display(t_fdf *fdf);
 
 /* hook */

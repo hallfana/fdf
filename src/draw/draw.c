@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:59:53 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 19:04:49 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:14:35 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	_fdf_draw_lines(t_fdf *fdf)
 		while (j < fdf->columns)
 		{
 			if (j + 1 < fdf->columns)
-				_fdf_mlx_draw_line(fdf, fdf->tab[i][j], fdf->tab[i][j + 1]);
+				_fdf_mlx_draw_line_gradient(fdf, fdf->tab[i][j], fdf->tab[i][j + 1]);
 			if (i + 1 < fdf->lines)
-				_fdf_mlx_draw_line(fdf, fdf->tab[i][j], fdf->tab[i + 1][j]);
+				_fdf_mlx_draw_line_gradient(fdf, fdf->tab[i][j], fdf->tab[i + 1][j]);
 			j++;
 		}
 		i++;
