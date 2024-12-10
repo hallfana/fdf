@@ -1,33 +1,34 @@
 NAME=fdf
-
 CC = gcc
-
-SRC = main.c gnl.c gnl1.c mlx_utils.c handler.c
+SRC = \
+	./src/main.c \
+	./src/get_next_line/get_next_line.c \
+	./src/get_next_line/get_next_line_utils.c \
+	./src/init/mlx_init.c \
+	./src/init/tab_init.c \
+	./src/init/tab_populate.c \
+	./src/perspective/calculate_draw.c \
+	./src/draw/draw.c \
+	./src/draw/mlx_draw.c \
+	./src/hook/keyboard.c \
+	
 
 OBJ = $(SRC:.c=.o)
 
-LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
-LIBFT_INC = -I$(LIBFT_DIR)
-
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -Ift $(LIBFT_INC) -O3 -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -I/usr/include -I./includes -Imlx_linux -Ift -O3 -g -fsanitize=address -c $< -o $@
 
-$(NAME): $(OBJ) $(LIBFT)
-	git add .; git commit -m "auto"; git push
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -Ift -lXext -lX11 -lm -lz -L$(LIBFT_DIR) -lft -o $(NAME)
-
-$(LIBFT):
-	make -C $(LIBFT_DIR)
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -Ift -lXext -lX11 -lm -lz -g -fsanitize=address -L./libs -lft -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
-	make -C $(LIBFT_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
-	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
 all: $(NAME)
+
+PHONY: all clean fclean re
