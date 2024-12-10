@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:53:05 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 19:03:58 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:05:08 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	_fdf_mlx_draw_pixel(t_fdf *fdf, int x, int y, int color)
 
 	if (x < 0 || x >= _FDF_WIDTH || y < 0 || y >= _FDF_HEIGHT)
 		return ;
+	printf("x: %d, y: %d, color: %d\n", x, y, color);
 	dst = fdf->img->addr + (y * fdf->img->line_length + x * (fdf->img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
