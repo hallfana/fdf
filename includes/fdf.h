@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:37:07 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 00:47:52 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:57:48 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ void	_fdf_display(t_fdf *fdf);
 
 /* hook */
 int		_fdf_key_hook(int keycode, t_fdf *fdf);
+
+/* utils */
+int		_fdf_atoi_base(char *str, char *base);
 
 #endif

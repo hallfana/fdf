@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:25:23 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 01:02:10 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:58:45 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,24 @@
 static void	_fdf_line_populate(t_fdf *fdf, char *line, int i)
 {
 	char	**split;
+	char	**tmp;
 	int		j;
 	
 	split = ft_split(line, ' ');
 	j = 0;
 	while (split[j])
 	{
+		tmp = ft_split(split[j], ',');
 		fdf->tab[i][j].origin_x = j * 20;
 		fdf->tab[i][j].origin_y = i * 20;
-		fdf->tab[i][j].origin_z = ft_atoi(split[j]);
+		fdf->tab[i][j].origin_z = ft_atoi(tmp[0]);
 		fdf->tab[i][j].draw_x = 0;
 		fdf->tab[i][j].draw_y = 0;
 		fdf->tab[i][j].draw_z = 0;
+		if (tmp[1])
+			fdf->tab[i][j].color = _fdf_atoi_base(tmp[1] + 2, "0123456789ABCDEF");
+		else
+			fdf->tab[i][j].color = 0xFFFFFF;
 		fdf->tab[i][j].color = 0xFFFFFF;
 		j++;
 	}

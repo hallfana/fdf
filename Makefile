@@ -11,6 +11,7 @@ SRC = \
 	./src/draw/draw.c \
 	./src/draw/mlx_draw.c \
 	./src/hook/keyboard.c \
+	./src/utils/atoi_base.c \
 	
 
 OBJ = $(SRC:.c=.o)
