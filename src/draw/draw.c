@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:59:53 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 00:11:11 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:01:12 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	_fdf_draw_points(t_fdf *fdf)
 	}
 }
 
-static void	_fdf_draw_lines(t_fdf *fdf)
+/*static void	_fdf_draw_lines(t_fdf *fdf)
 {
 	int		i;
 	int		j;
@@ -49,7 +49,7 @@ static void	_fdf_draw_lines(t_fdf *fdf)
 		}
 		i++;
 	}
-}
+}*/
 
 void	_fdf_display(t_fdf *fdf)
 {
@@ -68,6 +68,6 @@ void	_fdf_display(t_fdf *fdf)
 	}
 	fdf->img->addr = mlx_get_data_addr(fdf->img->img, &fdf->img->bits_per_pixel, &fdf->img->line_length, &fdf->img->endian);
 	_fdf_draw_points(fdf);
-	_fdf_draw_lines(fdf);
+	//_fdf_draw_lines(fdf);
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img->img, 0, 0);
 }
