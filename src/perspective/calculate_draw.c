@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:43:50 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 00:56:25 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:10:52 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_point	_fdf_calculate_iso(t_fdf *fdf, int i, int j)
     point.draw_y = -scaled_z + (scaled_x + scaled_y) * sin(0.523599);
     point.draw_z = scaled_z;
     //point.color = create_gradient(fdf->tab[i][j].origin_z, 0, 10);
-	point.color = 0xFFFFFF;
+	point.color = fdf->tab[i][j].color;
     return (point);
 }
 
