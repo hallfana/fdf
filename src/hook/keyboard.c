@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 00:04:44 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:49:18 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:52:50 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void _fdf_exit(t_fdf *fdf)
 	while (fdf->lines--)
 		free(fdf->tab[fdf->lines]);
 	free(fdf->tab);
+	free(fdf->img);
+	free(fdf);
 	exit(0);
 }
 
