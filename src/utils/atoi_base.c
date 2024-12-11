@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   atoi_base.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 11:53:02 by vtouffet          #+#    #+#             */
-/*   Updated: 2024/12/10 18:58:23 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:26:25 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ static int	check_errors(char *str, char *base)
 	int	start;
 
 	start = 0;
-	while (str[start] != '\0' && (str[start] == ' ' || str[start] == '\t' ||
-		str[start] == '\r' || str[start] == '\n' || str[start] == '\v' ||
-		str[start] == '\f'))
+	while (str[start] != '\0' && (str[start] == ' ' || str[start] == '\t'
+			|| str[start] == '\r' || str[start] == '\n' || str[start] == '\v'
+			|| str[start] == '\f'))
 		start++;
 	i = start;
 	while (str[i])
 	{
 		j = 0;
-		while (base[j] && (str[i] != base[j] ||
-				(str[i] == '-' || str[i] == '+')))
+		while (base[j] && (str[i] != base[j]
+				|| (str[i] == '-' || str[i] == '+')))
 			++j;
 		if (str[i] != base[j] && str[i] != '-' && str[i] != '+')
 			return (0);
@@ -81,7 +81,8 @@ int	_fdf_atoi_base(char *str, char *base)
 	int	negative;
 	int	base_length;
 
-	if (!(base_length = get_base_length(base)) || !check_errors(str, base))
+	base_length = get_base_length(base);
+	if (!base_length || !check_errors(str, base))
 		return (0);
 	s = 0;
 	while (str[s] != '\0' && (str[s] == ' ' || str[s] == '\t' || str[s] == '\r'
@@ -90,8 +91,8 @@ int	_fdf_atoi_base(char *str, char *base)
 	i = s - 1;
 	res = 0;
 	negative = 1;
-	while (str[++i] && (((str[i] == '-' || str[i] == '+') && i == s) ||
-			(str[i] != '-' && str[i] != '+')))
+	while (str[++i] && (((str[i] == '-' || str[i] == '+') && i == s)
+			|| (str[i] != '-' && str[i] != '+')))
 	{
 		if (str[i] == '-')
 			negative = -1;

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_draw.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:53:05 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 19:13:59 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:24:14 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf.h"
 
 void	_fdf_mlx_draw_pixel(t_fdf *fdf, int x, int y, int color)
 {

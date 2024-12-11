@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tab_populate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:25:23 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 19:16:19 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:23:43 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf.h"
 
 static void	_fdf_line_populate(t_fdf *fdf, char *line, int i)
 {

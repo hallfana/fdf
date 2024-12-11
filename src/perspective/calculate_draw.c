@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_draw.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:43:50 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 19:11:59 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:23:56 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf.h"
 
 /*static int create_gradient(int z, int min_z, int max_z)
 {
