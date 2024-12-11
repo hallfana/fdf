@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:25:23 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:45:46 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:46:16 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	_fdf_line_populate(t_fdf *fdf, char *line, int i)
 		else
 			fdf->tab[i][j].color = 0xFFFFFF;
 		j++;
+		_fdf_free_split(t);
 	}
 	_fdf_free_split(split);
 }
