@@ -6,19 +6,28 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 00:04:44 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:44:16 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:49:18 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
+void _fdf_exit(t_fdf *fdf)
+{
+	mlx_destroy_image(fdf->mlx, fdf->img->img);
+	mlx_destroy_window(fdf->mlx, fdf->win);
+	while (fdf->lines--)
+		free(fdf->tab[fdf->lines]);
+	free(fdf->tab);
+	exit(0);
+}
+
 int	_fdf_key_hook(int keycode, t_fdf *fdf)
 {
 	if (keycode == 65307)
 	{
-		mlx_destroy_image(fdf->mlx, fdf->img->img);
-		mlx_destroy_window(fdf->mlx, fdf->win);
-		exit(0);
+		_fdf_exit(fdf);
+		return (0);
 	}
 	if (keycode == 65362)
 	{
