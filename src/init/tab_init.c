@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:51:22 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:30:55 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:34:00 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ void	_fdf_tab_init(t_fdf *fdf, char *file)
 
 	fdf->lines = _fdf_tab_count_lines(file);
 	fdf->columns = _fdf_tab_count_columns(file);
-	printf("lines: %d, columns: %d\n", fdf->lines, fdf->columns);
 	if (fdf->lines == 0 || fdf->columns == 0)
 	{
 		ft_putstr_fd("Error: Invalid File\n", 1);
