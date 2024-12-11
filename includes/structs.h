@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:38:45 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 00:57:03 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:31:56 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,16 @@ typedef struct	s_line
 	int		error;
 	int		error2;
 }				t_line;
+
+typedef struct	s_offset
+{
+	int		i;
+	int		j;
+	int		min_x;
+	int		max_x;
+	int		min_y;
+	int		max_y;
+}				t_offset;
 
 typedef struct	s_fdf
 {
