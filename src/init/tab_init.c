@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:51:22 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:16:59 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:17:19 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	_fdf_tab_count_lines(char *file)
 	return (lines);
 }
 
-/*static void	_fdf_free_split(char **split)
+static void	_fdf_free_split(char **split)
 {
 	int	i;
 
@@ -45,42 +45,47 @@ static int	_fdf_tab_count_lines(char *file)
 		i++;
 	}
 	free(split);
-}*/
+}
 
 static int	_fdf_tab_count_columns(char *file)
 {
 	int		fd;
-	char	*line;
-	char	**split;
 	int		columns;
+	int		current_columns;
+	char	*line;
+	char	**split_line;
 
+	columns = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
+		return (0);
+	line = _gnl_get_next_line(fd);
+	if (line)
 	{
-		ft_putstr_fd("Error: Failed to open file\n", 1);
-		exit(1);
+		split_line = ft_split(line, ' ');
+		while (split_line[columns])
+			columns++;
+		free(line);
+		_fdf_free_split(split_line);
 	}
 	line = _gnl_get_next_line(fd);
-	if (!line)
+	while (line)
 	{
-		close(fd);
-		return (0);
-	}
-	split = ft_split(line, ' ');
-	if (!split)
-	{
-		ft_putstr_fd("Error: Memory allocation failed\n", 1);
+		split_line = ft_split(line, ' ');
+		current_columns = 0;
+		while (split_line[current_columns])
+			current_columns++;
+		if (columns != current_columns)
+		{
+			free(line);
+			_fdf_free_split(split_line);
+			close(fd);
+			return (0);
+		}
 		free(line);
-		close(fd);
-		exit(1);
+		_fdf_free_split(split_line);
+		line = _gnl_get_next_line(fd);
 	}
-	columns = 0;
-	while (split[columns])
-		columns++;
-	// Free the split array
-	for (int i = 0; split[i]; i++)
-		free(split[i]);
-	free(split);
 	free(line);
 	close(fd);
 	return (columns);
