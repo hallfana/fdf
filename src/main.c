@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:35:39 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:52:27 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 23:56:37 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 	_fdf_calculate_draw(&fdf, &_fdf_calculate_iso);
 	_fdf_display(&fdf);
 	mlx_hook(fdf.win, 2, 1L << 0, _fdf_key_hook, &fdf);
+	mlx_hook(fdf.win, 17, 1L << 17, _fdf_exit, &fdf);
 	mlx_loop(fdf.mlx);
 	return (0);
 }

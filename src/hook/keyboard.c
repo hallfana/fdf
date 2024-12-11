@@ -3,30 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 00:04:44 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:57:24 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 23:58:00 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-void	_fdf_exit(t_fdf *fdf)
+int	_fdf_exit(int i, t_fdf *fdf)
 {
+	(void)i;
 	mlx_destroy_image(fdf->mlx, fdf->img->img);
 	mlx_destroy_window(fdf->mlx, fdf->win);
 	while (fdf->lines--)
 		free(fdf->tab[fdf->lines]);
 	free(fdf->tab);
 	exit(0);
+	return (0);
 }
 
 int	_fdf_key_hook(int keycode, t_fdf *fdf)
 {
 	if (keycode == 65307)
 	{
-		_fdf_exit(fdf);
+		_fdf_exit(0, fdf);
 		return (0);
 	}
 	if (keycode == 65362)
