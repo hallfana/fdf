@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tab_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:51:22 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/09 23:52:37 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:53:06 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,21 @@ static int	_fdf_tab_count_lines(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (0);
-	while ((line = _gnl_get_next_line(fd)))
+	line = _gnl_get_next_line(fd);
+	while (line)
 	{
 		lines++;
 		free(line);
+		line = _gnl_get_next_line(fd);
 	}
+	free(line);
 	close(fd);
 	return (lines);
 }
 
-static void _fdf_free_split(char **split)
+static void	_fdf_free_split(char **split)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (split[i])
@@ -44,26 +47,30 @@ static void _fdf_free_split(char **split)
 	free(split);
 }
 
-static int _fdf_tab_count_columns(char *file)
+static int	_fdf_tab_count_columns(char *file)
 {
 	int		fd;
 	int		columns;
 	char	*line;
 	char	**split_line;
-	
+
 	columns = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (0);
-	if ((line = _gnl_get_next_line(fd)))
+	line = _gnl_get_next_line(fd);
+	if (line)
 	{
 		split_line = ft_split(line, ' ');
 		while (split_line[columns])
 			columns++;
 		free(line);
 		_fdf_free_split(split_line);
+		line = _gnl_get_next_line(fd);
 	}
-	while ((line = _gnl_get_next_line(fd)))
+	free(line);
+	line = _gnl_get_next_line(fd);
+	while (line)
 	{
 		split_line = ft_split(line, ' ');
 		int current_columns = 0;
@@ -78,7 +85,9 @@ static int _fdf_tab_count_columns(char *file)
 		}
 		free(line);
 		_fdf_free_split(split_line);
+		line = _gnl_get_next_line(fd);
 	}
+	free(line);
 	close(fd);
 	return (columns);
 }
