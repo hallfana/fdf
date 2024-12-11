@@ -6,13 +6,13 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 00:04:44 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:54:11 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:57:24 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-void _fdf_exit(t_fdf *fdf)
+void	_fdf_exit(t_fdf *fdf)
 {
 	mlx_destroy_image(fdf->mlx, fdf->img->img);
 	mlx_destroy_window(fdf->mlx, fdf->win);

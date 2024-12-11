@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:37:07 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:48:41 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:57:44 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	_fdf_mlx_draw_line_gradient(t_fdf *fdf, t_point point1, t_point point2);
 void	_fdf_display(t_fdf *fdf);
 
 /* hook */
-void 	_fdf_exit(t_fdf *fdf);
+void	_fdf_exit(t_fdf *fdf);
 int		_fdf_key_hook(int keycode, t_fdf *fdf);
 
 /* utils */
