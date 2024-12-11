@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:37:07 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 13:46:51 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:45:27 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	*_gnl_get_next_line(int fd);
 
 /* init */
 void	_fdf_mlx_init(t_fdf *fdf);
+void	_fdf_free_split(char **split);
 void	_fdf_tab_init(t_fdf *fdf, char *file);
 void	_fdf_tab_populate(t_fdf *fdf, char *file);
 

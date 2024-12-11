@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:51:22 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:34:21 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:45:15 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	_fdf_tab_count_lines(char *file)
 	return (lines);
 }
 
-static void	_fdf_free_split(char **split)
+void	_fdf_free_split(char **split)
 {
 	int	i;
 
