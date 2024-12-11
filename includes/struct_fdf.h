@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:38:45 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 13:45:52 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:47:46 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct s_point
 	int		color;
 }	t_point;
 
-typedef struct	s_img {
+typedef struct s_img
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -40,7 +41,7 @@ typedef struct	s_img {
 	int		endian;
 }				t_img;
 
-typedef struct	s_line
+typedef struct s_line
 {
 	int		delta_x;
 	int		delta_y;
@@ -50,7 +51,7 @@ typedef struct	s_line
 	int		error2;
 }				t_line;
 
-typedef struct	s_offset
+typedef struct s_offset
 {
 	int		i;
 	int		j;
@@ -60,7 +61,7 @@ typedef struct	s_offset
 	int		max_y;
 }				t_offset;
 
-typedef struct	s_fdf
+typedef struct s_fdf
 {
 	void		*mlx;
 	void		*win;

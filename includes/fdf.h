@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:37:07 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 13:45:50 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:46:51 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	_fdf_tab_init(t_fdf *fdf, char *file);
 void	_fdf_tab_populate(t_fdf *fdf, char *file);
 
 /* perspective */
-void	_fdf_calculate_draw(t_fdf *fdf, t_point (*func_draw)(t_fdf *, int, int));
+void	_fdf_calculate_draw(t_fdf *fdf,
+			t_point (*func_draw)(t_fdf *, int, int));
 t_point	_fdf_calculate_iso(t_fdf *fdf, int i, int j);
 
 /* draw */
