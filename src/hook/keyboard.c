@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 00:04:44 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:43:35 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:44:16 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	_fdf_key_hook(int keycode, t_fdf *fdf)
 {
 	if (keycode == 65307)
 	{
+		mlx_destroy_image(fdf->mlx, fdf->img->img);
 		mlx_destroy_window(fdf->mlx, fdf->win);
 		exit(0);
 	}
