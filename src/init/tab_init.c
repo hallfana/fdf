@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:51:22 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:06:39 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:07:32 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	_fdf_tab_count_columns(char *file)
 	close(fd);
 	free(line);
 	printf("columns: %d\n", i);
-	return (i);
+	return (i - 1);
 }
 
 void	_fdf_tab_init(t_fdf *fdf, char *file)
