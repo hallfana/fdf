@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   struct_fdf.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:38:45 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 13:31:56 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:45:52 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#ifndef STRUCT_FDF_H
+# define STRUCT_FDF_H
 
 typedef struct s_gnl
 {

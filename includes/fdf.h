@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:37:07 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 19:14:20 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:45:50 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@
 # include <math.h>
 # include <fcntl.h>
 # include <sys/types.h>
-# include <float.h>
 # include <limits.h>
 
-# include "structs.h"
-# include "libft.h"
-# include "mlx.h"
+# include "./struct_fdf.h"
+# include "./libft.h"
+# include "./mlx.h"
 
 # define _FDF_WIDTH 1000
 # define _FDF_HEIGHT 1000
