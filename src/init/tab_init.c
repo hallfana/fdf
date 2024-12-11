@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:51:22 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:17:19 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:18:43 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,49 +47,67 @@ static void	_fdf_free_split(char **split)
 	free(split);
 }
 
-static int	_fdf_tab_count_columns(char *file)
+typedef struct s_file_info
 {
 	int		fd;
 	int		columns;
-	int		current_columns;
 	char	*line;
 	char	**split_line;
+}	t_file_info;
 
-	columns = 0;
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
+static int	_fdf_tab_count_columns(char *file)
+{
+	t_file_info	info;
+
+	info.columns = 0;
+	info.fd = open(file, O_RDONLY);
+	if (info.fd < 0)
 		return (0);
-	line = _gnl_get_next_line(fd);
-	if (line)
+	info.line = _gnl_get_next_line(info.fd);
+	if (info.line)
 	{
-		split_line = ft_split(line, ' ');
-		while (split_line[columns])
-			columns++;
-		free(line);
-		_fdf_free_split(split_line);
+		info.split_line = ft_split(info.line, ' ');
+		while (info.split_line[info.columns])
+			info.columns++;
+		free(info.line);
+		_fdf_free_split(info.split_line);
 	}
-	line = _gnl_get_next_line(fd);
-	while (line)
+	close(info.fd);
+	return (info.columns);
+}
+/*
+static int	_fdf_validate_columns(char *file, int columns)
+{
+	t_file_info	info;
+	int			current_columns;
+
+	info.fd = open(file, O_RDONLY);
+	if (info.fd < 0)
+		return (0);
+	info.line = _gnl_get_next_line(info.fd);
+	free(info.line);
+	info.line = _gnl_get_next_line(info.fd);
+	while (info.line)
 	{
-		split_line = ft_split(line, ' ');
+		info.split_line = ft_split(info.line, ' ');
 		current_columns = 0;
-		while (split_line[current_columns])
+		while (info.split_line[current_columns])
 			current_columns++;
 		if (columns != current_columns)
 		{
-			free(line);
-			_fdf_free_split(split_line);
-			close(fd);
+			free(info.line);
+			_fdf_free_split(info.split_line);
+			close(info.fd);
 			return (0);
 		}
-		free(line);
-		_fdf_free_split(split_line);
-		line = _gnl_get_next_line(fd);
+		free(info.line);
+		_fdf_free_split(info.split_line);
+		info.line = _gnl_get_next_line(info.fd);
 	}
-	free(line);
-	close(fd);
-	return (columns);
-}
+	free(info.line);
+	close(info.fd);
+	return (1);
+}*/
 
 void	_fdf_tab_init(t_fdf *fdf, char *file)
 {
