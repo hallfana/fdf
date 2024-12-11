@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:51:22 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:03:20 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:04:12 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,22 @@ static int	_fdf_tab_count_columns(char *file)
 	int		fd;
 	int		columns;
 	char	*line;
-	char	**split_line;
+	char	**split;
 
 	columns = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (0);
 	line = _gnl_get_next_line(fd);
-	split_line = ft_split(line, ' ');
-	while (split_line[columns])
+	if (!line)
+		return (0);
+	split = ft_split(line, ' ');
+	while (split[columns])
+	{
+		//_fdf_free_split(split);
 		columns++;
+	}
+	//_fdf_free_split(split);
 	free(line);
 	close(fd);
 	return (columns);
