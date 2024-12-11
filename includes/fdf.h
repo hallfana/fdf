@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:37:07 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:57:44 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 23:52:37 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FDF_H
 
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
