@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:51:22 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:20:20 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:20:37 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	_fdf_free_split(char **split)
 
 static int	_fdf_tab_count_columns(char *file)
 {
+	return (19);
 	int		fd;
 	int		columns;
 	int		current_columns;
