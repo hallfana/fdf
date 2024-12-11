@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:59:53 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 13:24:18 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:38:25 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static void	_fdf_draw_points(t_fdf *fdf)
 		j = 0;
 		while (j < fdf->columns)
 		{
-			_fdf_mlx_draw_pixel(fdf, fdf->tab[i][j].draw_x, fdf->tab[i][j].draw_y, fdf->tab[i][j].color);
+			_fdf_mlx_draw_pixel(fdf, fdf->tab[i][j].draw_x,
+				fdf->tab[i][j].draw_y, fdf->tab[i][j].color);
 			j++;
 		}
 		i++;
@@ -42,9 +43,11 @@ static void	_fdf_draw_lines(t_fdf *fdf)
 		while (j < fdf->columns)
 		{
 			if (j + 1 < fdf->columns)
-				_fdf_mlx_draw_line_gradient(fdf, fdf->tab[i][j], fdf->tab[i][j + 1]);
+				_fdf_mlx_draw_line_gradient(fdf,
+					fdf->tab[i][j], fdf->tab[i][j + 1]);
 			if (i + 1 < fdf->lines)
-				_fdf_mlx_draw_line_gradient(fdf, fdf->tab[i][j], fdf->tab[i + 1][j]);
+				_fdf_mlx_draw_line_gradient(fdf,
+					fdf->tab[i][j], fdf->tab[i + 1][j]);
 			j++;
 		}
 		i++;
@@ -53,20 +56,14 @@ static void	_fdf_draw_lines(t_fdf *fdf)
 
 void	_fdf_display(t_fdf *fdf)
 {
-	/*if (!fdf->img)
-	{
-		ft_putstr_fd("Error: Image structure not initialized\n", 1);
-		return;
-	}
-	if (fdf->img->img)
-		mlx_destroy_image(fdf->mlx, fdf->img->img);*/
 	fdf->img->img = mlx_new_image(fdf->mlx, _FDF_WIDTH, _FDF_HEIGHT);
 	if (!fdf->img->img)
 	{
 		ft_putstr_fd("Error: Failed to create new image\n", 1);
-		return;
+		return ;
 	}
-	fdf->img->addr = mlx_get_data_addr(fdf->img->img, &fdf->img->bits_per_pixel, &fdf->img->line_length, &fdf->img->endian);
+	fdf->img->addr = mlx_get_data_addr(fdf->img->img, &fdf->img->bits_per_pixel,
+			&fdf->img->line_length, &fdf->img->endian);
 	_fdf_draw_points(fdf);
 	_fdf_draw_lines(fdf);
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img->img, 0, 0);

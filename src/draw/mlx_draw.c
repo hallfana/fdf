@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:53:05 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 13:24:14 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:36:58 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ void	_fdf_mlx_draw_pixel(t_fdf *fdf, int x, int y, int color)
 
 	if (x < 0 || x >= _FDF_WIDTH || y < 0 || y >= _FDF_HEIGHT)
 		return ;
-	dst = fdf->img->addr + (y * fdf->img->line_length + x * (fdf->img->bits_per_pixel / 8));
+	dst = fdf->img->addr + (y * fdf->img->line_length + x
+			* (fdf->img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 
-static int	_fdf_get_gradient_color(t_point point1, t_point point2, t_point current)
+static int	_fdf_get_gradient_color(t_point point1,
+				t_point point2, t_point current)
 {
 	float	percentage;
 	int		red;
@@ -30,12 +32,17 @@ static int	_fdf_get_gradient_color(t_point point1, t_point point2, t_point curre
 	int		blue;
 
 	if (point1.draw_x == point2.draw_x)
-		percentage = (float)(current.draw_y - point1.draw_y) / (point2.draw_y - point1.draw_y);
+		percentage = (float)(current.draw_y - point1.draw_y)
+			/ (point2.draw_y - point1.draw_y);
 	else
-		percentage = (float)(current.draw_x - point1.draw_x) / (point2.draw_x - point1.draw_x);
-	red = (int)((1 - percentage) * ((point1.color >> 16) & 0xFF) + percentage * ((point2.color >> 16) & 0xFF));
-	green = (int)((1 - percentage) * ((point1.color >> 8) & 0xFF) + percentage * ((point2.color >> 8) & 0xFF));
-	blue = (int)((1 - percentage) * (point1.color & 0xFF) + percentage * (point2.color & 0xFF));
+		percentage = (float)(current.draw_x - point1.draw_x)
+			/ (point2.draw_x - point1.draw_x);
+	red = (int)((1 - percentage) * ((point1.color >> 16)
+				& 0xFF) + percentage * ((point2.color >> 16) & 0xFF));
+	green = (int)((1 - percentage) * ((point1.color >> 8)
+				& 0xFF) + percentage * ((point2.color >> 8) & 0xFF));
+	blue = (int)((1 - percentage) * (point1.color & 0xFF)
+			+ percentage * (point2.color & 0xFF));
 	return ((red << 16) | (green << 8) | blue);
 }
 
@@ -63,7 +70,8 @@ void	_fdf_mlx_draw_line_gradient(t_fdf *fdf, t_point point1, t_point point2)
 	current = point1;
 	while (current.draw_x != point2.draw_x || current.draw_y != point2.draw_y)
 	{
-		_fdf_mlx_draw_pixel(fdf, current.draw_x, current.draw_y, _fdf_get_gradient_color(point1, point2, current));
+		_fdf_mlx_draw_pixel(fdf, current.draw_x, current.draw_y,
+			_fdf_get_gradient_color(point1, point2, current));
 		line.error2 = line.error * 2;
 		if (line.error2 > -line.delta_y)
 		{

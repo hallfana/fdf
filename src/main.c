@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:35:39 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/10 00:55:07 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:39:19 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_fdf fdf;
-	
+	t_fdf	fdf;
+
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error: Missing Arguments\n", 1);
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	}
 	_fdf_calculate_draw(&fdf, &_fdf_calculate_iso);
 	_fdf_display(&fdf);
-	mlx_hook(fdf.win, 2, 1L<<0, _fdf_key_hook, &fdf);
+	mlx_hook(fdf.win, 2, 1L << 0, _fdf_key_hook, &fdf);
 	mlx_loop(fdf.mlx);
 	return (0);
 }
