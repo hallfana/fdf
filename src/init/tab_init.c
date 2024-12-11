@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:51:22 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:18:56 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:19:38 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	_fdf_tab_count_lines(char *file)
 	return (lines);
 }
 
-static void	_fdf_free_split(char **split)
+/*static void	_fdf_free_split(char **split)
 {
 	int	i;
 
@@ -45,9 +45,9 @@ static void	_fdf_free_split(char **split)
 		i++;
 	}
 	free(split);
-}
+}*/
 
-static int	_fdf_tab_count_columns(char *file)
+/*static int	_fdf_tab_count_columns(char *file)
 {
 	int		fd;
 	int		columns;
@@ -89,14 +89,14 @@ static int	_fdf_tab_count_columns(char *file)
 	free(line);
 	close(fd);
 	return (columns);
-}
+}*/
 
 void	_fdf_tab_init(t_fdf *fdf, char *file)
 {
 	int	i;
 
 	fdf->lines = _fdf_tab_count_lines(file);
-	fdf->columns = _fdf_tab_count_columns(file);
+	fdf->columns = 19;//_fdf_tab_count_columns(file);
 	if (fdf->lines == 0 || fdf->columns == 0)
 	{
 		ft_putstr_fd("Error: Invalid File\n", 1);
