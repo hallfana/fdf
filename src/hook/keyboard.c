@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 00:04:44 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/12 18:05:49 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:11:41 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	_fdf_exit(t_fdf *fdf)
 		free(fdf->tab[fdf->lines]);
 	free(fdf->tab);
 	free(fdf->mlx);
+	free(fdf->img->img);
+	free(fdf->img->addr);
 	free(fdf->img);
 	free(fdf);
 	exit(0);
