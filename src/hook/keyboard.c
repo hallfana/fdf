@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 00:04:44 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/12 18:27:37 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:34:57 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	_fdf_exit(t_fdf *fdf)
 	mlx_destroy_window(fdf->mlx, fdf->win);
 	mlx_destroy_image(fdf->mlx, fdf->img->img);
 	mlx_destroy_display(fdf->mlx);
-	while(fdf->lines)
+	while (fdf->lines)
 		free(fdf->tab[--fdf->lines]);
 	free(fdf->tab);
 	free(fdf->img);
