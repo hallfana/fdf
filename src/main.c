@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:35:39 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 23:56:37 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:07:45 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ int	main(int argc, char **argv)
 	_fdf_mlx_init(&fdf);
 	_fdf_tab_init(&fdf, argv[1]);
 	_fdf_tab_populate(&fdf, argv[1]);
-	fdf.img = (t_img *)malloc(sizeof(t_img));
-	if (!fdf.img)
-	{
-		ft_putstr_fd("Error: Memory allocation failed\n", 1);
-		return (0);
-	}
 	_fdf_calculate_draw(&fdf, &_fdf_calculate_iso);
 	_fdf_display(&fdf);
 	mlx_hook(fdf.win, 2, 1L << 0, _fdf_key_hook, &fdf);
