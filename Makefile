@@ -1,5 +1,5 @@
 NAME=fdf
-CC = gcc
+CC = cc
 SRC = \
 	./src/main.c \
 	./src/get_next_line/get_next_line.c \
