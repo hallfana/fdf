@@ -6,11 +6,28 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:27:54 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/12 18:22:46 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:23:53 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
+
+static int	fill_buffer(char **buf, int fd)
+{
+	int		is_eof;
+
+	*buf = (char *) malloc(_GNL_BUFFER_SIZE * sizeof(char) + 1);
+	if (*buf == NULL)
+		return (0);
+	is_eof = read(fd, *buf, _GNL_BUFFER_SIZE);
+	if (is_eof < 0 || is_eof == 0)
+	{
+		free(*buf);
+		return (is_eof);
+	}
+	(*buf)[is_eof] = '\0';
+	return (is_eof);
+}
 
 static char	*reduce_tmp(char *str, int start)
 {
@@ -68,23 +85,6 @@ static char	*get_new_line_from_tmp(char **tmp)
 	new_line = gnl_strdup(*tmp, '\n');
 	*tmp = reduce_tmp(*tmp, gnl_strlen(*tmp, '\n') + 0);
 	return (new_line);
-}
-
-static int	fill_buffer(char **buf, int fd)
-{
-	int		is_eof;
-
-	*buf = (char *) malloc(_GNL_BUFFER_SIZE * sizeof(char) + 1);
-	if (*buf == NULL)
-		return (0);
-	is_eof = read(fd, *buf, _GNL_BUFFER_SIZE);
-	if (is_eof < 0 || is_eof == 0)
-	{
-		free(*buf);
-		return (is_eof);
-	}
-	(*buf)[is_eof] = '\0';
-	return (is_eof);
 }
 
 char	*_gnl_get_next_line(int fd)
