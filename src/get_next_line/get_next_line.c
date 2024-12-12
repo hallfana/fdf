@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:27:54 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/12 18:26:45 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:27:04 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static char	*ft_remove_line(char *buffer)
 	return (newbuffer);
 }
 
-char	*get_next_line(int fd)
+char	*_gnl_get_next_line(int fd)
 {
 	static char	*buffer[1024];
 	char		*line;

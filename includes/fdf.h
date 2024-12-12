@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:37:07 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/12 18:22:43 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:26:58 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@
 
 /* get_next_line */
 char	*_gnl_get_next_line(int fd);
-int		gnl_strlen(const char *s, char end);
-int		line_counter(const char *str);
-void	cpy_len(const char *src, char *dest, int len);
-char	*gnl_strdup(const char *s, char end);
-char	*gnl_strjoin(char *s1, char *s2);
 
 /* init */
 void	_fdf_mlx_init(t_fdf *fdf);
