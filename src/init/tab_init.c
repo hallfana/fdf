@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:51:22 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/12 18:32:27 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:33:51 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,13 @@ static int	_fdf_tab_count_columns(char *file)
 	split = ft_split(line, ' ');
 	while (split[i] != NULL)
 		i++;
+	while (line)
+	{
+		free(line);
+		line = _gnl_get_next_line(fd);
+	}
 	free(line);
+	close(fd);
 	_fdf_free_split(split);
 	return (i);
 }
