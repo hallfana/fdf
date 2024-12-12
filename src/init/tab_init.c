@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:51:22 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/12 18:18:16 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:28:29 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static int	_fdf_tab_count_columns(char *file)
 		_fdf_free_split(split_line);
 	}
 	free(line);
+	close(fd);
 	return (columns);
 }
 
