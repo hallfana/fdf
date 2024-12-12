@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:37:07 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/12 00:01:19 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:58:21 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
 # include <sys/types.h>
