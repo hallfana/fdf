@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:27:54 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/12 18:23:53 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:24:14 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	fill_buffer(char **buf, int fd)
 {
 	int		is_eof;
 
+	is_eof = 0;
 	*buf = (char *) malloc(_GNL_BUFFER_SIZE * sizeof(char) + 1);
 	if (*buf == NULL)
 		return (0);
