@@ -6,112 +6,107 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:27:54 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/12 18:25:01 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:26:45 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-static int	fill_buffer(char **buf, int fd)
+static int	ft_linelen(char *s)
 {
-	int		is_eof;
+	size_t	i;
 
-	*buf = (char *) malloc(_GNL_BUFFER_SIZE * sizeof(char) + 1);
-	if (*buf == NULL)
-		return (0);
-	is_eof = read(fd, *buf, _GNL_BUFFER_SIZE);
-	if (is_eof < 0 || is_eof == 0)
-	{
-		free(*buf);
-		return (is_eof);
-	}
-	(*buf)[is_eof] = '\0';
-	return (is_eof);
+	i = 0;
+	while (*(s + i) != '\n' && *(s + i) != '\0')
+		i++;
+	if (*(s + i) == '\0')
+		return (i);
+	return (i + 1);
 }
 
-static char	*reduce_tmp(char *str, int start)
+static char	*ft_extract_line(char *buffer)
 {
-	char	*new_tmp;
+	char	*line;
+	int		size;
+
+	if (!buffer || buffer[0] == '\0')
+		return (NULL);
+	size = ft_linelen(buffer) + 1;
+	line = ft_calloc(size, sizeof (char));
+	if (line == NULL)
+		return (NULL);
+	ft_strlcpy(line, buffer, size);
+	return (line);
+}
+
+static char	*ft_read(int fd, char *buffer)
+{
+	char	*new_buffer;
+	char	*reading;
+	int		byte_read;
+
+	if (ft_strchr(buffer, '\n') != 0)
+		return (buffer);
+	reading = ft_calloc((_GNL_BUFFER_SIZE + 1), sizeof(char));
+	if (reading == NULL)
+		return (buffer);
+	while (ft_strchr(reading, '\n') == 0)
+	{
+		byte_read = read(fd, reading, _GNL_BUFFER_SIZE);
+		if (byte_read < 1)
+			break ;
+		reading[byte_read] = '\0';
+		new_buffer = ft_strjoin(buffer, reading);
+		free (buffer);
+		buffer = new_buffer;
+	}
+	free (reading);
+	return (buffer);
+}
+
+static char	*ft_remove_line(char *buffer)
+{
+	int		start;
+	char	*newbuffer;
 	int		i;
 
-	if (gnl_strlen(&str[start], '\0') == 0)
+	if (!buffer)
+		return (NULL);
+	if (buffer[0] == '\0')
 	{
-		free(str);
+		free (buffer);
 		return (NULL);
 	}
-	new_tmp = (char *) malloc((gnl_strlen(&str[start], '\0') + 1)
-			* sizeof(char));
-	if (new_tmp == NULL)
+	start = ft_linelen(buffer);
+	newbuffer = ft_calloc (ft_strlen(buffer) - start + 1, sizeof (char));
+	if (newbuffer == NULL)
 		return (NULL);
 	i = 0;
-	while (str[start] != '\0')
+	while (buffer[start + i] != '\0')
 	{
-		new_tmp[i] = str[start];
-		start++;
+		newbuffer[i] = buffer[start + i];
 		i++;
 	}
-	new_tmp[i] = '\0';
-	free(str);
-	return (new_tmp);
+	newbuffer[i] = buffer[start + i];
+	free (buffer);
+	return (newbuffer);
 }
 
-static int	read_new_line(char **tmp, int fd)
+char	*get_next_line(int fd)
 {
-	char	*buf;
-	int		is_eof;
+	static char	*buffer[1024];
+	char		*line;
 
-	is_eof = -100;
-	while (line_counter(*tmp) == 0 && is_eof != 0)
-	{
-		if (is_eof < _GNL_BUFFER_SIZE && is_eof != -100)
-			break ;
-		is_eof = fill_buffer(&buf, fd);
-		if (is_eof == -1)
-		{
-			free (*tmp);
-			*tmp = NULL;
-			return (-1);
-		}
-		if (is_eof != 0)
-			*tmp = gnl_strjoin(*tmp, buf);
-	}
-	return (is_eof);
+	if (fd < 0 || fd > 1023 || _GNL_BUFFER_SIZE < 1)
+		return (NULL);
+	if (read(fd, 0, 0) < 0 && !buffer[fd])
+		return (NULL);
+	if (!buffer[fd])
+		buffer[fd] = ft_calloc(1, 1);
+	if (buffer[fd] == NULL)
+		return (NULL);
+	buffer[fd] = ft_read(fd, buffer[fd]);
+	line = ft_extract_line(buffer[fd]);
+	buffer[fd] = ft_remove_line(buffer[fd]);
+	return (line);
 }
-
-static char	*get_new_line_from_tmp(char **tmp)
-{
-	char	*new_line;
-
-	new_line = gnl_strdup(*tmp, '\n');
-	*tmp = reduce_tmp(*tmp, gnl_strlen(*tmp, '\n') + 0);
-	return (new_line);
-}
-
-char	*_gnl_get_next_line(int fd)
-{
-	char		*tmp;
-	char		*new_line;
-	int			is_eof;
-	static char	*fd_tmp_storage[8192];	
-
-	tmp = fd_tmp_storage[fd];
-	new_line = NULL;
-	is_eof = -1;
-	if (line_counter(tmp) != 0)
-		new_line = get_new_line_from_tmp(&tmp);
-	else
-	{
-		is_eof = read_new_line(&tmp, fd);
-		if (is_eof == -1)
-		{
-			fd_tmp_storage[fd] = tmp;
-			return (NULL);
-		}
-	}
-	if (new_line == NULL && ((is_eof == 0 && gnl_strlen(tmp, '\0') != 0)
-			|| is_eof != 0))
-		new_line = get_new_line_from_tmp(&tmp);
-	fd_tmp_storage[fd] = tmp;
-	return (new_line);
-}
-
