@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 00:04:44 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/12 18:13:15 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:16:05 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 int	_fdf_exit(t_fdf *fdf)
 {
-	free(fdf->img->img);
-	free(fdf->img->addr);
-	free(fdf->img);
-	mlx_destroy_image(fdf->mlx, fdf->img->img);
 	mlx_destroy_window(fdf->mlx, fdf->win);
-	while (fdf->lines--)
-		free(fdf->tab[fdf->lines]);
+	mlx_destroy_image(fdf->mlx, fdf->img->img);
+	mlx_destroy_display(fdf->mlx);
+	while(fdf->lines)
+		free(fdf->tab[--fdf->lines]);
 	free(fdf->tab);
+	free(fdf->img);
 	free(fdf->mlx);
 	free(fdf);
 	exit(0);
-	return (0);
 }
 
 int	_fdf_key_hook(int keycode, t_fdf *fdf)
