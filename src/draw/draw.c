@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:59:53 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/12 18:06:27 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:09:41 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,18 @@ static void	_fdf_draw_lines(t_fdf *fdf)
 
 void	_fdf_display(t_fdf *fdf)
 {
+	//if an img exist free it and make a new ootherwise make a new one
+	if (fdf->img->img)
+		mlx_destroy_image(fdf->mlx, fdf->img->img);
+	else
+	{
+		fdf->img->img = mlx_new_image(fdf->mlx, _FDF_WIDTH, _FDF_HEIGHT);
+		if (!fdf->img->img)
+		{
+			ft_putstr_fd("Error: Failed to create new image\n", 1);
+			return ;
+		}
+	}
 	fdf->img->img = mlx_new_image(fdf->mlx, _FDF_WIDTH, _FDF_HEIGHT);
 	if (!fdf->img->img)
 	{
