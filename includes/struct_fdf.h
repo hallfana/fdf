@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_fdf.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:38:45 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/11 13:47:46 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:04:05 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ typedef struct s_fdf
 	t_point		**tab;
 	int			lines;
 	int			columns;
-	//int			max_z;
-	//int			min_z;
 	t_img		*img;
 	float		zoom;
 }				t_fdf;

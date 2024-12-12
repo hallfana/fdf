@@ -6,7 +6,7 @@
 /*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 21:59:53 by samberna          #+#    #+#             */
-/*   Updated: 2024/12/12 17:58:09 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:05:06 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,8 @@ static void	_fdf_draw_lines(t_fdf *fdf)
 
 void	_fdf_display(t_fdf *fdf)
 {
-	if (fdf->img->img)
-	{
-		printf("destroying image\n");
+	if (fdf->img)
 		mlx_destroy_image(fdf->mlx, fdf->img->img);
-		fdf->img->img = NULL;
-	}
 	fdf->img->img = mlx_new_image(fdf->mlx, _FDF_WIDTH, _FDF_HEIGHT);
 	if (!fdf->img->img)
 	{
