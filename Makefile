@@ -3,7 +3,6 @@ CC = gcc
 SRC = \
 	./src/main.c \
 	./src/get_next_line/get_next_line.c \
-	./src/get_next_line/get_next_line_utils.c \
 	./src/init/mlx_init.c \
 	./src/init/tab_init.c \
 	./src/init/tab_populate.c \
