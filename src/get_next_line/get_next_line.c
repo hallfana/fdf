@@ -3,120 +3,110 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samberna <samberna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samberna <samberna@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:27:54 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/11 14:33:37 by samberna         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:50:16 by samberna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-static char	*ft_extract_line(char **str, t_gnl *f)
+static int	ft_linelen(char *s)
 {
-	char	*line;
-	char	*tmp;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	while ((*str)[i] && (*str)[i] != '\n')
+	while (*(s + i) != '\n' && *(s + i) != '\0')
 		i++;
-	if ((*str)[i] == '\n')
-		i++;
-	line = ft_substr(*str, 0, i);
-	tmp = ft_substr(*str, i, ft_strlen(*str) - i);
-	free(*str);
-	if (!tmp)
-	{
-		free(line);
-		*str = NULL;
+	if (*(s + i) == '\0')
+		return (i);
+	return (i + 1);
+}
+
+static char	*ft_extract_line(char *buffer)
+{
+	char	*line;
+	int		size;
+
+	if (!buffer || buffer[0] == '\0')
 		return (NULL);
-	}
-	*str = tmp;
-	if ((*str) == 0)
-		free(f);
+	size = ft_linelen(buffer) + 1;
+	line = ft_calloc(size, sizeof (char));
+	if (line == NULL)
+		return (NULL);
+	ft_strlcpy(line, buffer, size);
 	return (line);
 }
 
-static char	*ft_realloc(char *old, size_t olds, size_t news)
+static char	*ft_read(int fd, char *buffer)
 {
-	char	*new;
+	char	*new_buffer;
+	char	*reading;
+	int		byte_read;
+
+	if (ft_strchr(buffer, '\n') != 0)
+		return (buffer);
+	reading = ft_calloc((_GNL_BUFFER_SIZE + 1), sizeof(char));
+	if (reading == NULL)
+		return (buffer);
+	while (ft_strchr(reading, '\n') == 0)
+	{
+		byte_read = read(fd, reading, _GNL_BUFFER_SIZE);
+		if (byte_read < 1)
+			break ;
+		reading[byte_read] = '\0';
+		new_buffer = ft_strjoin(buffer, reading);
+		free (buffer);
+		buffer = new_buffer;
+	}
+	free (reading);
+	return (buffer);
+}
+
+static char	*ft_remove_line(char *buffer)
+{
+	int		start;
+	char	*newbuffer;
 	int		i;
 
-	if (news == 0)
-		return (old);
-	new = malloc(olds + news + 1);
-	if (!new)
+	if (!buffer)
+		return (NULL);
+	if (buffer[0] == '\0')
+	{
+		free (buffer);
+		return (NULL);
+	}
+	start = ft_linelen(buffer);
+	newbuffer = ft_calloc (ft_strlen(buffer) - start + 1, sizeof (char));
+	if (newbuffer == NULL)
 		return (NULL);
 	i = 0;
-	while (old[i])
+	while (buffer[start + i] != '\0')
 	{
-		new[i] = old[i];
+		newbuffer[i] = buffer[start + i];
 		i++;
 	}
-	new[i] = '\0';
-	free(old);
-	return (new);
-}
-
-static void	ft_find_new(t_gnl *f, ssize_t *bytes, int fd)
-{
-	int	len;
-
-	len = ft_strlen((*f).buf);
-	while (!ft_strchr((*f).buf, '\n') && *bytes > 0)
-	{
-		(*f).buf = ft_realloc((*f).buf, ft_strlen((*f).buf), _GNL_BUFFER_SIZE);
-		if (!(*f).buf)
-			return ;
-		*bytes = read(fd, (*f).buf + ft_strlen((*f).buf), _GNL_BUFFER_SIZE);
-		if (*bytes > 0)
-		{
-			(*f).buf[*bytes + len] = '\0';
-			len += *bytes;
-			(*f).tab += *bytes;
-		}
-		else if (*bytes < 0)
-		{
-			_gnl_cleanup_fd(f);
-			return ;
-		}
-	}
-}
-
-static void	ft_init(t_gnl *f)
-{
-	if (!(*f).buf)
-	{
-		(*f).buf = ft_strdup("");
-		if (!(*f).buf)
-			return ;
-		(*f).tab = 0;
-	}
+	newbuffer[i] = buffer[start + i];
+	free (buffer);
+	return (newbuffer);
 }
 
 char	*_gnl_get_next_line(int fd)
 {
-	static t_gnl	f[1024];
-	char			*line;
-	ssize_t			bytes;
+	static char	*buffer[1024];
+	char		*line;
 
-	if (fd < 0 || _GNL_BUFFER_SIZE <= 0 || fd >= 1024)
-	{
+	if (fd < 0 || fd > 1023 || _GNL_BUFFER_SIZE < 1)
 		return (NULL);
-	}
-	ft_init(&f[fd]);
-	line = NULL;
-	bytes = 1;
-	ft_find_new(&f[fd], &bytes, fd);
-	if (f[fd].buf && *f[fd].buf)
-	{
-		line = ft_extract_line(&f[fd].buf, &f[fd]);
-		if (!line)
-			return (NULL);
-		return (line);
-	}
-	if (bytes <= 0 || (!f[fd].buf || !*f[fd].buf))
-		_gnl_cleanup_fd(&f[fd]);
+	if (read(fd, 0, 0) < 0 && !buffer[fd])
+		return (NULL);
+	if (!buffer[fd])
+		buffer[fd] = ft_calloc(1, 1);
+	if (buffer[fd] == NULL)
+		return (NULL);
+	buffer[fd] = ft_read(fd, buffer[fd]);
+	line = ft_extract_line(buffer[fd]);
+	buffer[fd] = ft_remove_line(buffer[fd]);
 	return (line);
 }

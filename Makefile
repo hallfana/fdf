@@ -20,7 +20,6 @@ OBJ = $(SRC:.c=.o)
 	$(CC) -Wall -Wextra -Werror -I/usr/include -I./includes -Imlx_linux -Ift -O3 -g -c $< -o $@
 
 $(NAME): $(OBJ) libft
-	git add .; git commit -m "auto"; git push
 	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -Ift -lXext -lX11 -lm -lz -g -L./libs -lft -g -fsanitize=address -o $(NAME)
 
 clean:
@@ -37,4 +36,9 @@ all: $(NAME)
 libft:
 	make -C ./libs
 
-PHONY: all clean fclean re
+dev :
+	make fclean
+	git add .; git commit -m "auto/dev"; git push
+	make all
+
+PHONY: all clean fclean re dev
